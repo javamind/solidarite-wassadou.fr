@@ -1,0 +1,37 @@
+'use strict'
+
+const map = require('map-stream')
+const fs = require('fs');
+const gutil = require('gulp-util');
+const PluginError = gutil.PluginError;
+
+module.exports = function () {
+
+  const pageMetadata = {
+    'index.html' : {
+      keywords: "Solidarité Wassadou Pont-Trambouze Sénégal",
+      title: "Solidarité Wassadou Pont-Trambouze",
+      description : "Site de l'association solidartité Wassadou à Pont Trambouze qui aide au développement du village de Wassadou au Sénégal (développement axé sur la jeunesse et l'éducation)"
+    }
+  };
+
+  return map((file, next) => {
+
+    const html = fs.readFileSync(file.path, 'utf8');
+    file.fileName = file.path.substring(file.path.lastIndexOf('/') + 1, file.path.length);
+
+    if (!pageMetadata[file.fileName]) throw new PluginError('html-read', `Missing index definition for ${file.path} in the build script html-read`);
+
+    file.templateModel = {
+      keywords: () => pageMetadata[file.fileName].keywords,
+      title: () => pageMetadata[file.fileName].title,
+      description: () => pageMetadata[file.fileName].description,
+      contents: () => new Buffer(html),
+      blog: () => pageMetadata[file.fileName].blog,
+      canonicalUrl: () => file.fileName
+    };
+
+    next(null, file);
+  });
+}
+

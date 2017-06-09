@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "Solidarité Wassadou Pont-Trambouze",
+  "launch_path": "/index.html",
+  "description": "Solidarité Wassadou Pont-Trambouze",
+  "start_url": "/index.html"
+  "icons": {
+    "128": "/images/touch/icon.png"
+  },
+  "developer": {
+    "name": "Guillaume EHRET",
+    "url": "https://www.dev-mind.fr/"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "fr",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Solidarité Wassadou Pont-Trambouze",
+      "description": "Solidarité Wassadou Pont-Trambouze"
+    }
+  }
+}
