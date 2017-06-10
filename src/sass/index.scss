@@ -7,10 +7,10 @@
 
 #swp_transition_village{
   @include  swp_transition(#9e8779, 50px);
-  height: 4em;
-  background: url('../img/transition/village1.svg') bottom space, url('../img/transition/village2.svg') top space;
+  height: 5em;
+  background: url('../img/transition/village4.svg') bottom space, url('../img/transition/village3.svg') top space;
   background-color:#ffc107;
-  background-position: 0 1em;
+  background-position: 1em -2em;
 
 }
 
