@@ -1,0 +1,30 @@
+@import "common";
+
+.swp_home {
+  @include swp_section(#ffc107, $color_dark);
+  @include swp_section_link(#F57F17);
+}
+
+#swp_transition_village{
+  @include  swp_transition(#9e8779, 50px);
+  height: 4em;
+  background: url('../img/transition/village1.svg') bottom space, url('../img/transition/village2.svg') top space;
+  background-color:#ffc107;
+  background-position: 0 1em;
+
+}
+
+.swp_wassadou {
+  @include swp_section(#795548, #EFEBE9);
+  @include swp_section_link(#D7CCC8);
+}
+
+.swp_donation {
+  @include swp_section(#4caf50, $color_dark);
+  @include swp_section_link(#33691E);
+}
+
+.swp_contact {
+  @include swp_section(#e64a19, white);
+  @include swp_section_link(#FBE9E7);
+}

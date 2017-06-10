@@ -1,5 +1,5 @@
 /* eslint-env browser */
-(function() {
+window.app = (function() {
   'use strict';
 
   function initSw(path){
@@ -71,38 +71,27 @@
     }
   }
 
-  // function changeMenu(section){
-  //   if(!section){
-  //     if(window.location.href.indexOf('blog') > 0){
-  //       section = '#blog';
-  //     }
-  //     else if(window.location.href.indexOf('experience') > 0){
-  //       section = '#experience';
-  //     }
-  //     else{
-  //       section = '#home';
-  //     }
-  //   }
-  //   if(section === '#casino' || section === '#iorga' || section === '#boiron' || section === '#solutec' || section ==='#conferences'){
-  //     section = '#experience';
-  //   }
-  //   if(lastActiveSection && document.getElementById(lastActiveSection)){
-  //     document.getElementById(lastActiveSection).classList.remove("is-active");
-  //   }
-  //   if(document.getElementById(section)){
-  //     document.getElementById(section).classList.add("is-active");
-  //   }
-  //   lastActiveSection = section;
-  // }
-  //
-  // let isBlogPage = document.currentScript.text.indexOf('blog=true')>-1;
-  // let lastActiveSection = window.location.hash;
+  function changeMenu(section){
+    if(!section){
+      section = '#home';
+    }
+    if(lastActiveSection && document.getElementById(lastActiveSection)){
+      document.getElementById(lastActiveSection).classList.remove("is-active");
+    }
+    console.log(section)
+    if(document.getElementById(section)){
+      document.getElementById(section).classList.add("is-active");
+    }
+    lastActiveSection = section;
+  }
 
-  //changeMenu(lastActiveSection);
-  initSw(isBlogPage ? '../../': '');
+  let lastActiveSection = window.location.hash;
+
+  changeMenu(lastActiveSection);
+  initSw();
 
   return {
     "initSw": initSw,
-    //"changeMenu" : changeMenu
+    "changeMenu" : changeMenu
   }
 })();

@@ -1,3 +1,10 @@
 image::src/images/logo.svg[Solidarité Wassadou Pont Trambouze]
 
 Site de l'association
+
+Choix des couleurs
+
+* Jaune (le soleil) : accueil
+* Marron (le village) : wassadou
+* Vert (la forêt, faire pousser) : don en ligne
+* Rouge (la terre, les racines) : contact

@@ -1,23 +1,8 @@
 @import "common";
+@import "index";
 
 footer {
   background-color: $color_dark;
-}
-
-.is-small-screen{
-  display: none;
-}
-.is-large-screen{
-  display: inherit;
-}
-
-@media screen and (max-width: $max_width_tablet) {
-  .is-small-screen{
-    display: inherit;
-  }
-  .is-large-screen{
-    display: none;
-  }
 }
 
 h1, h2{
@@ -95,4 +80,43 @@ h2{
   text-align: center;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.swp_footer {
+  color: $color_dark_txt;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+
+  .swp_society{
+    color: white;
+  }
+
+  div{
+    margin-right: 1em;
+    width: 100%;
+  }
+
+  .swp_footer__middle{
+    flex-grow: 1;
+  }
+
+  .swp_footer__right{
+    text-align: right;
+  }
+}
+
+.swp_footer .is-large-screen {
+  padding: 0.7em;
+  margin: 0.7em 1em;
+}
+
+.swp_footer .is-small-screen {
+  padding: 0;
+  margin: 0 1em;
+  font-size: 12px;
+}
 

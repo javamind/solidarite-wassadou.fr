@@ -56,7 +56,7 @@
         header {
             min-height: 64px;
             box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            background-color: #186fc6;
+            background-color: #e2642a;
             display: -webkit-flex;
             display: flex;
             box-sizing: border-box;
@@ -69,7 +69,7 @@
             height: calc(100vh - 64px);
             overflow-x: hidden;
             overflow-y: scroll;
-            background-color: #2196f3; }
+            background-color: #ffc107; }
         img {
             max-width: 100%;
             height: auto;
@@ -77,18 +77,18 @@
         * {
             box-sizing: border-box; /* pour maîtriser width et flex-basis */
         }
-        devmind-home-me, devmind-home-blog, devmind-home-formation, devmind-home-experience, devmind-home-contact {
+        swp-home, swp-wassadou, swp-donation, swp-contact {
             display: block;
             margin: 0 auto;
             max-width: 1600px;
             padding: 80px 40px; }
         @media (max-width: 700px) {
-            devmind-home-me, devmind-home-blog, devmind-home-formation, devmind-home-experience, devmind-home-contact {
+            swp-home, swp-wassadou, swp-donation, swp-contact {
                 padding: 25px 10px; } }
         @media (min-width: 701px) and (max-width: 900px) {
-            devmind-home-me, devmind-home-blog, devmind-home-formation, devmind-home-experience, devmind-home-contact {
+            swp-home, swp-wassadou, swp-donation, swp-contact {
                 padding: 40px 25px; } }
-        .dm-social {
+        .swp-social {
             min-width: 2em;
             max-width: 2em;
             width: 2em;
@@ -104,7 +104,7 @@
             color: rgba(255, 255, 255, 0.6);
             line-height: 64px;
             height: 60px;
-            border-bottom: 4px solid #186fc6;
+            border-bottom: 4px solid #e2642a;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 500;
@@ -119,6 +119,13 @@
             color: white; }
         nav a > img {
             padding-top: 16px; }
+
+        .is-small-screen{display:none}
+        .is-large-screen{display:inherit}
+        @media screen and (max-width:900px){
+            .is-small-screen{display:inherit}
+            .is-large-screen{display:none}
+        }
     </style>
 </head>
 <body class="dev-mind">
@@ -126,13 +133,11 @@
 <header>
     <nav>
         <a href="index.html" class="mdl-layout__tab"
-           id="#home" onclick="app.changeMenu('#home')"><img src="img/homr.svg" rel="start" alt="Accueil"></a>
-        <a href="blog.html" class="mdl-layout__tab"
-           id="#blog" onclick="app.changeMenu('#blog')">Blog</a>
-        <a href="index.html#formation" class="mdl-layout__tab"
-           id="#formation" onclick="app.changeMenu('#formation')">Formations</a>
-        <a href="index.html#experience" class="mdl-layout__tab is-large-screen"
-           id="#experience" onclick="app.changeMenu('#experience')">Expérience</a>
+           id="#home" onclick="app.changeMenu('#home')"><img src="img/home.svg" rel="start" alt="Accueil"></a>
+        <a href="index.html#wassadou" class="mdl-layout__tab"
+           id="#wassadou" onclick="app.changeMenu('#wassadou')">Wassadou</a>
+        <a href="index.html#donation" class="mdl-layout__tab"
+           id="#donation" onclick="app.changeMenu('#donation')">Faire un don</a>
         <a href="index.html#contact" class="mdl-layout__tab"
            id="#contact" onclick="app.changeMenu('#contact')">Contact</a>
     </nav>
