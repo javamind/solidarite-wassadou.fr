@@ -12,8 +12,14 @@ const moment = require('moment');
 
 const $ = require('gulp-load-plugins')();
 
+const asciidoctorRead = require('./gulp-extensions/transformers/asciidoctor-read');
+const asciidoctorConvert = require('./gulp-extensions/transformers/asciidoctor-convert');
+const asciidoctorIndexing = require('./gulp-extensions/transformers/asciidoctor-indexing');
+const asciidoctorRss = require('./gulp-extensions/transformers/asciidoctor-rss');
 const htmlRead = require('./gulp-extensions/transformers/html-read');
 const applyTemplate = require('./gulp-extensions/transformers/apply-template');
+const highlightCode = require('./gulp-extensions/transformers/highlight-code');
+const firebaseImgCacheBusting = require('./gulp-extensions/transformers/firebase-img-cache-busting');
 
 const AUTOPREFIXER_BROWSERS = [
   'ie >= 11',
@@ -59,6 +65,41 @@ gulp.task('styles', (cb) => {
     .pipe(gulp.dest('build/dist/css'))
     .pipe($.if(!modeDev, $.rev.manifest()))
     .pipe(gulp.dest('build/dist/css'))
+    .on('end', () => cb())
+});
+
+gulp.task('blog-indexing', (cb) => {
+  // Hack to be able to stop the task when the async firebase requests are complete
+  gulp.on('stop', () => {
+    if(!modeDev) {
+      process.nextTick(() => process.exit(0));
+    }
+  });
+  gulp.src('src/blog/**/*.adoc')
+    .pipe(asciidoctorRead())
+    .pipe(asciidoctorConvert())
+    .pipe(asciidoctorIndexing())
+    .on('end', () => cb())
+});
+
+gulp.task('blog-rss', (cb) => {
+  gulp.src('src/blog/**/*.adoc')
+    .pipe(asciidoctorRead())
+    .pipe(asciidoctorConvert())
+    .pipe(asciidoctorRss('blog.xml'))
+    .pipe(gulp.dest('build/dist/rss'))
+    .on('end', () => cb())
+});
+
+gulp.task('blog', ['blog-indexing', 'blog-rss'], (cb) => {
+  gulp.src('src/blog/**/*.adoc')
+    .pipe(asciidoctorRead())
+    .pipe(asciidoctorConvert())
+    .pipe(applyTemplate('src/templates/blog.hbs'))
+    .pipe(highlightCode({selector: 'pre.highlight code'}))
+    .pipe(gulp.dest('build/.tmp/blog'))
+    .pipe($.htmlmin(HTMLMIN_OPTIONS))
+    .pipe(gulp.dest('build/dist/blog'))
     .on('end', () => cb())
 });
 
@@ -229,6 +270,7 @@ gulp.task('build', cb => {
 
 runSequence(
     'styles',
+//    'blog',
     'images-min',
     'images',
     'lint',

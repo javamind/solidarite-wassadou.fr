@@ -8,10 +8,21 @@ const PluginError = gutil.PluginError;
 module.exports = function () {
 
   const pageMetadata = {
+    '404.html' : {
+      keywords: 'Solidarité Wassadou Pont-Trambouze Sénégal',
+      title: 'Solidarité Wassadou Pont-Trambouze 404',
+      description : 'Page non trouvée sur le serveur',
+    },
     'index.html' : {
       keywords: "Solidarité Wassadou Pont-Trambouze Sénégal",
       title: "Solidarité Wassadou Pont-Trambouze",
       description : "Site de l'association solidartité Wassadou à Pont Trambouze qui aide au développement du village de Wassadou au Sénégal (développement axé sur la jeunesse et l'éducation)"
+    },
+    'blog.html' : {
+      keywords: 'Solidarité Wassadou Pont-Trambouze Sénégal Blog',
+      title: 'Le blog Solidarité Wassadou Pont-Trambouze',
+      description : "Le blog Solidarité Wassadou Pont-Trambouze regroupe des articles sur les activités de l'association",
+      blog: true
     }
   };
 
