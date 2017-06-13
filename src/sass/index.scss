@@ -6,7 +6,7 @@
 }
 
 #swp_transition_village{
-  @include  swp_transition(#9e8779, 50px);
+  @include  swp_transition(#ffc107, 50px);
   height: 5em;
   background: url('../img/transition/village4.svg') bottom space, url('../img/transition/village3.svg') top space;
   background-color:#ffc107;
@@ -19,12 +19,35 @@
   @include swp_section_link(#D7CCC8);
 }
 
+#swp_transition_tree{
+  @include  swp_transition(#795548, 50px);
+  height: 7em;
+  background: url('../img/transition/tree.svg') top;
+  background-color:#795548;
+}
+
 .swp_donation {
   @include swp_section(#4caf50, $color_dark);
   @include swp_section_link(#33691E);
 }
 
+#swp_transition_ground{
+  @include  swp_transition(#4caf50, 150px);
+  height: 150px;
+  background: url('../img/transition/tree_root.svg');
+  background-color:#4caf50;
+}
 .swp_contact {
   @include swp_section(#e64a19, white);
   @include swp_section_link(#FBE9E7);
+}
+
+.swp-social {
+  min-width: 2em;
+  max-width: 2em;
+  width: 2em;
+  height: 2em;
+  &:hover{
+    opacity: 0.8;
+  }
 }
