@@ -82,17 +82,6 @@
         * {
             box-sizing: border-box; /* pour maîtriser width et flex-basis */
         }
-        swp-home, swp-wassadou, swp-donation, swp-contact {
-            display: block;
-            margin: 0 auto;
-            max-width: 1600px;
-            padding: 80px 40px; }
-        @media (max-width: 700px) {
-            swp-home, swp-wassadou, swp-donation, swp-contact {
-                padding: 25px 10px; } }
-        @media (min-width: 701px) and (max-width: 900px) {
-            swp-home, swp-wassadou, swp-donation, swp-contact {
-                padding: 40px 25px; } }
         .swp-social {
             min-width: 2em;
             max-width: 2em;
@@ -145,41 +134,42 @@
            id="#donation">Faire un don</a>
         <a href="../../blog.html" class="mdl-layout__tab is-active"
            id="#blog">Blog</a>
-        <a href="../../index.html#contact" class="mdl-layout__tab"
+        <a href="../../index.html#contact" class="mdl-layout__tab is-large-screen"
            id="#contact">Contact</a>
     </nav>
 </header>
 <main>
-    <swp-home-blog>
-        <p class="swp_logo center">
-            <img src="../../img/logo_long.svg" alt="Solidarité Wassadou Pont-Trambouze"/>
-            <br>&nbsp;
-        </p>
-        <div class="swp_home_blog" id="blog">
+    <div class="content">
+        <article class="swp_home" id="home">
             <swp-article>
-                <article>
-                    <h1 >{{ title }}</h1>
-                    <div class="swp-blog--info-date"><small>{{ revdate }}</small></div>
-                    <div id="blog-keywords"></div>
-                    <div></div>
-                    {{{ contents }}}
-                </article>
-            </swp-article>
+                <p class="swp_logo center">
+                    <img src="../../img/logo_long.svg" alt="Solidarité Wassadou Pont-Trambouze"/>
+                    <br>&nbsp;
+                </p>
+                <div class="swp_home_blog" id="blog">
+                        <article>
+                            <h1 >{{ title }}</h1>
+                            <div class="swp-blog--info-date"><small>Ecrit le {{ revdate }}</small></div>
+                            <div id="blog-keywords"></div>
+                            <div></div>
+                            {{{ contents }}}
+                        </article>
 
-            <swp-header>
-                <div class="swp-blog--button">
-                    <p>Partagez cet article</p>
-                    <button onclick="blog.sendSocial('twitter', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/twitter.svg" alt="Twitter" class="swp-social"></button>
-                    <button onclick="blog.sendSocial('google+', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/googlep.svg" alt="Github" class="swp-social"></button>
-                    <button onclick="blog.sendSocial('facebook', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/facebook.svg" alt="Facebook" class="swp-social"></button>
-                    <button onclick="blog.sendSocial('linkedin', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/linkedin.svg" alt="Linkedin" class="swp-social"></button>
-                    <br>
-                    <div id="previous-blogpost"></div>
+                    <swp-header>
+                        <div class="swp-blog--button">
+                            <p>Partagez cet article</p>
+                            <button onclick="blog.sendSocial('twitter', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/twitter.svg" alt="Twitter" class="swp-social"></button>
+                            <button onclick="blog.sendSocial('google+', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/googlep.svg" alt="Github" class="swp-social"></button>
+                            <button onclick="blog.sendSocial('facebook', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/facebook.svg" alt="Facebook" class="swp-social"></button>
+                            <button onclick="blog.sendSocial('linkedin', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/linkedin.svg" alt="Linkedin" class="swp-social"></button>
+                            <br>
+                            <div id="previous-blogpost"></div>
+                        </div>
+                    </swp-header>
                 </div>
-            </swp-header>
-        </div>
-    </swp-home-blog>
-
+            </swp-article>
+        </article>
+    </div>
     <div id="swp_transition_village"></div>
 
     <footer>

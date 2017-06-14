@@ -46,8 +46,8 @@ module.exports = (modeDev) => {
     database
       .ref(`${modeDev ? 'dev/blogs' : 'blogs'}/${filename}`)
       .set({
-        strdate: file.attributes.revdate,
-        revdate: moment(file.attributes.revdate, 'YYYY-mm-DD').format('DD/mm/YYYY'),
+        strdate: moment(file.attributes.revdate, 'DD/mm/YYYY').format('YYYY-mm-DD'),
+        revdate: file.attributes.revdate,
         description: file.attributes.description,
         doctitle: file.attributes.doctitle,
         keywords: file.attributes.keywords,

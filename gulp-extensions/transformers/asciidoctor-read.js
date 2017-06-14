@@ -3,6 +3,7 @@
 const map = require('map-stream');
 const asciidoctor = require('asciidoctor.js')();
 const firebaseConfig = require("../../firebase.json");
+const moment = require('moment');
 
 const asciidoctorOptions = {
   safe: 'safe',
@@ -29,7 +30,7 @@ module.exports = function ({ includes } = {}) {
     file.templateModel = {
       keywords: () => file.attributes.keywords,
       title: () => file.attributes.doctitle,
-      revdate: () => file.attributes.revdate,
+      revdate: () => moment(file.attributes.revdate, 'YYYY-mm-DD').format('DD/mm/YYYY'),
       contents: () => file.contents,
       'github-edit-url': () => file.git.githubEditUrl,
       filename: file.path.substring(file.path.lastIndexOf("/") + 1, file.path.lastIndexOf(".")),
