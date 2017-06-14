@@ -17,7 +17,8 @@ module.exports = (modeDev) => {
       apiKey: firebaseConfig.apiKey,
       authDomain: firebaseConfig.authDomain,
       databaseURL: firebaseConfig.databaseURL,
-      storageBucket: firebaseConfig.storageBucket
+      storageBucket: firebaseConfig.storageBucket,
+      messagingSenderId: firebaseConfig.messagingSenderId
     });
   }
   const database = firebase.database();
@@ -51,7 +52,6 @@ module.exports = (modeDev) => {
         doctitle: file.attributes.doctitle,
         keywords: file.attributes.keywords,
         filename: filename,
-        category: file.attributes.category,
         teaser: file.attributes.teaser,
         imgteaser: file.attributes.imgteaser,
         dir: file.path.substring(file.path.lastIndexOf("blog/") + 5, file.path.lastIndexOf("/"))

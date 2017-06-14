@@ -1,0 +1,18 @@
+@import "atom-light";
+@import "common";
+
+article {
+  padding: 1em;
+}
+
+swp-article {
+  @include swp_container_closest();
+}
+
+.imageblock, .videoblock{
+  text-align: center;
+}
+
+.swp-blog--previous{
+  padding: 2em;
+}

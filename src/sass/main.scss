@@ -120,3 +120,19 @@ h2{
   font-size: 12px;
 }
 
+.swp_logo{
+  img{
+    width:40%;
+    height:auto;
+  }
+  @media (max-width: $max_width_mobile) {
+    img{
+      width:70%;
+    }
+  }
+  @media (min-width: $min_width_tablet) and (max-width: $max_width_tablet) {
+    img{
+      width:50%;
+    }
+  }
+}
