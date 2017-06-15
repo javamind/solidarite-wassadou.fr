@@ -134,8 +134,8 @@ window.blog = (function () {
       </table>
       `;
 
-    if (nbElementDisplayed >= blogIndex.length) {
-      document.getElementById('more-article').style.display = 'none';
+    if (nbElementDisplayed < blogIndex.length) {
+      document.getElementById('more-article').style.display = 'visible';
     }
   }
 

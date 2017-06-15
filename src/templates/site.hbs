@@ -45,10 +45,10 @@
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="img/touch/ms-touch-icon.png">
-    <meta name="msapplication-TileColor" content="#2196f3">
+    <meta name="msapplication-TileColor" content="#ffc107">
 
     <!-- Color the status bar on mobile devices -->
-    <meta name="theme-color" content="#2196f3">
+    <meta name="theme-color" content="#ffc107">
 
     <style>
         body {
@@ -96,10 +96,18 @@
         {{/if}}
         @media (max-width: 700px) {
             swp-home, swp-wassadou, swp-donation, swp-contact {
-                padding: 25px 10px; } }
+                padding: 25px 10px; }
+            {{#if blog}}
+                swp-home-blog { padding: 20px 10px; }
+            {{/if}}
+        }
         @media (min-width: 701px) and (max-width: 900px) {
             swp-home, swp-wassadou, swp-donation, swp-contact {
-                padding: 40px 25px; } }
+                padding: 40px 25px; }
+            {{#if blog}}
+                swp-home-blog { padding: 20px 25px; }
+            {{/if}}
+        }
         .swp-social {
             min-width: 2em;
             max-width: 2em;

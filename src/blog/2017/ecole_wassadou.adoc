@@ -4,7 +4,7 @@
 :author: Jean Pierre Lachat
 :revdate: 2017-06-15
 :teaser: L’école de Wassadou a été ré-ouverte en 1999 grâce à Monsieur Seringne Babacar Ndiaye nommé directeur après de longues années d’abandon. L'établissement comprenait 2 classes seulement sans eau, électricité et sanitaire...
-:imgteaser: ../../img/blog/2017/ecole_wassadou_00.png
+:imgteaser: ../../img/blog/2017/ecole_wassadou_00.jpg
 
 L’école de Wassadou a été ré-ouverte en 1999 grâce à Monsieur Seringne Babacar Ndiaye nommé directeur après de longues années d’abandon. L'établissement comprenait 2 classes seulement sans eau, électricité et sanitaire.
 
@@ -16,6 +16,8 @@ A notre arrivée en 2004 l’école était fréquentée par environ 80 élèves 
 
 Une de nos premières actions a été de prendre à notre charge la participation financière des familles pour assurer la cantine toute l’année scolaire et ainsi fidéliser les enfants à l’école.
 Les fournitures scolaires des enfants et des enseignants sont également prises en charge par notre association cette année là, ainsi que le renouvèlement des manuels scolaires. Le fruit de ces actions ne s’est pas fait attendre puisque dès la première année il n’y a eu pratiquement plus d’abandon.
+
+image::../../img/blog/2017/ecole_wassadou_00.jpg[Ecole Wassadou]
 
 En moins de 4 ans, l’école de Wassadou est passée de 4 à 6 classes assurant ainsi l’ensemble du cycle de l’école primaire. Elle est fréquentée par prés de 300 élèves venant également des villages avoisinants et est devenue une école reconnue pour ses résultats dans tout le département et la région de Tambacounda. Cette école est même devenue un centre d’examen au CFEE (certificat de fin d’études élémentaires) au terme du CM2.
 
