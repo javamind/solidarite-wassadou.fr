@@ -216,6 +216,9 @@ gulp.task('cache-busting', (cb) => {
   const manifestCss = gulp.src('build/dist/css/rev-manifest.json');
   const manifestJs = gulp.src('build/dist/js/rev-manifest.json');
 
+  gulp.src(['build/dist/blog/**/*.html'])
+    .pipe(firebaseImgCacheBusting('build/dist/img/rev-manifest.json',modeDev));
+
   gulp.src(['build/dist/**/*.{html,js,css,xml}'])
     .pipe($.revReplace({manifest: manifestImg, replaceInExtensions: replaceInExtensions}))
     .pipe($.revReplace({manifest: manifestCss}))

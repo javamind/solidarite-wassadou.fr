@@ -1,0 +1,120 @@
+# Apache Server Configs v2.14.0 | MIT License
+
+Options -Indexes
+Options -Multiviews
+
+# Follow symbolic links in this directory.
+Options +FollowSymLinks
+
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.solidarite-wassadou.fr/$1 [R=301,L]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.solidarite-wassadou.fr/$1 [R=301,L]
+
+ErrorDocument 404 https://www.solidarite-wassadou.fr/404.html
+
+#FileETag INode MTime Size
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# Rules to correctly serve gzip compressed CSS and JS files.
+# Requires both mod_rewrite and mod_headers to be enabled.
+<IfModule mod_headers.c>
+    # Serve gzip compressed CSS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.css $1\.css\.gz [QSA]
+
+    # Serve gzip compressed JS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.js $1\.js\.gz [QSA]
+
+    # Serve correct content types, and prevent mod_deflate double gzip.
+    RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
+    RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
+
+    <FilesMatch "(\.js\.gz|\.css\.gz)$">
+        # Serve correct encoding type.
+        Header set Content-Encoding gzip
+        # Force proxies to cache gzipped & non-gzipped css/js files separately.
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+
+    #Secure Cookie
+    Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Max-Age=2592000;Domain=solidarite-wassadou.fr;Secure;
+
+    # Disable unsafe inline/eval, only allow loading of resources (images, fonts, scripts, etc.) over https
+    Header set Content-Security-Policy "upgrade-insecure-requests"
+
+    #Each resource should have a max age
+    Header set Strict-Transport-Security "max-age=604800; includeSubDomains" env=HTTPS
+
+    #It is supported by IE (Internet Explorer) and Chrome and prevents them
+    #from MIME-sniffing a response from the declared content-type.
+    Header set X-Content-Type-Options nosniff
+
+    #X-Frame-Options is an HTTP header that allows sites control over how your site may be framed
+    #within an iframe. Clickjacking is a practical attack that allows malicious sites to trick users
+    #into clicking links on your site even though they may appear to not be on your site at all.
+    Header set X-Frame-Options DENY
+
+    #X-XSS-Protection is a feature of Internet Explorer and Chrome that stops pages from loading when
+    #they detect reflected cross-site scripting (XSS) attacks.
+    Header set x-xss-protection "1; mode=block"
+
+
+    <FilesMatch "\.(ico|jpe?g|png|gif|swf|css|webp|svg|svgz)$">
+       Header set Cache-Control "max-age=691200, public"
+    </FilesMatch>
+    <FilesMatch "\.(js)$">
+       Header set Cache-Control "max-age=14400, private"
+    </FilesMatch>
+    <Files "service-worker.js">
+       Header set Cache-Control "max-age=14400, private"
+    </Files>
+    <filesMatch "\.(html|htm)$">
+       Header set Cache-Control "max-age=7200, public"
+    </filesMatch>
+    <FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+       Header unset Cache-Control
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+ ExpiresActive On
+ ExpiresDefault "access 1 day"
+ ExpiresByType image/webp "access 1 month"
+ ExpiresByType image/jpg "access 1 month"
+ ExpiresByType image/jpeg "access 1 month"
+ ExpiresByType image/png "access 1 month"
+ ExpiresByType image/gif "access 1 month"
+ ExpiresByType image/svg+xml "access 1 month"
+ AddType image/x-icon .ico
+ ExpiresByType image/ico "access 1 month"
+ ExpiresByType image/icon "access 1 month"
+ ExpiresByType image/x-icon "access 1 month"
+ ExpiresByType text/css "access 1 month"
+ ExpiresByType text/javascript "access 1 month"
+ ExpiresByType text/html "access plus 7200 seconds"
+ ExpiresByType application/xhtml+xml "access 1 month"
+ ExpiresByType application/javascript "access 1 month"
+ ExpiresByType application/x-javascript "access 1 month"
+</IfModule>
+# END Expire headers
+
+#Activation de la compression
+mod_gzip_on On
+
+#Compression active uniquement sur les contenus textuels.
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/xml application/xhtml+xml text/plain application/javascript text/css image/jpg image/png image/webp image/svg+xml
+
+<FilesMatch firebase.json">
+    Order Deny,Allow
+    Deny from All
+    Allow from localhost
+</FilesMatch>
