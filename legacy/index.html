@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Solidarite Wassadou Pont Trambouze">
+    <meta name="description" content="Solidarite Wassadou Pont Trambouze">
+    <meta http-equiv="refresh" content="2; url=https://www.solidarite-wassadou.fr/">
+    <link rel="canonical" href="https://www.solidarite-wassadou.fr/{{ canonicalUrl }}">
+
+    <title>Solidarite Wassadou Pont Trambouze</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            min-height: 100vh;
+            max-height: 100vh;
+            font-family: "Helvetica", "Arial", "sans-serif";
+            padding: 0;
+            margin: 0; }
+
+        header {
+            min-height: 64px;
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            background-color: #e2642a;
+            display: -webkit-flex;
+            display: flex;
+            box-sizing: border-box;
+            z-index: 99;
+            transition-duration: 0.2s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-property: max-height, box-shadow; }
+
+        main {
+            height: calc(100vh - 64px);
+            overflow-x: hidden;
+            overflow-y: scroll;
+            background-color: #ffc107; }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        * {
+            box-sizing: border-box; /* pour maîtriser width et flex-basis */
+        }
+        swp-home, swp-wassadou, swp-donation, swp-contact {
+            display: block;
+            margin: 0 auto;
+            max-width: 1600px;
+            padding: 80px 40px; }
+        {{#if blog}}
+        swp-home-blog {
+            display: block;
+            margin: 0 auto;
+            max-width: 1600px;
+            padding: 20px 40px; }
+        {{/if}}
+        @media (max-width: 700px) {
+            swp-home, swp-wassadou, swp-donation, swp-contact {
+                padding: 25px 10px; }
+        {{#if blog}}
+        swp-home-blog { padding: 20px 10px; }
+        {{/if}}
+        }
+        @media (min-width: 701px) and (max-width: 900px) {
+            swp-home, swp-wassadou, swp-donation, swp-contact {
+                padding: 40px 25px; }
+        {{#if blog}}
+        swp-home-blog { padding: 20px 25px; }
+        {{/if}}
+        }
+        .swp-social {
+            min-width: 2em;
+            max-width: 2em;
+            width: 2em;
+            height: 2em; }
+        nav {
+            display: -webkit-flex;
+            display: flex; }
+        @media screen and (min-width: 901px) {
+            nav {
+                padding-left: 1em; } }
+        nav a {
+            padding: 0 12px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 64px;
+            height: 60px;
+            border-bottom: 4px solid #e2642a;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 13px; }
+        @media screen and (min-width: 901px) {
+            nav a {
+                padding: 0 24px; } }
+        nav a:hover {
+            background-color: #424242; }
+        nav .is-active {
+            border-bottom: 4px solid white;
+            color: white; }
+        nav a > img {
+            padding-top: 16px; }
+
+        .is-small-screen{display:none}
+        .is-large-screen{display:inherit}
+        @media screen and (max-width:900px){
+            .is-small-screen{display:inherit}
+            .is-large-screen{display:none}
+        }
+        .swp_home {
+            width: 100%;
+            background-color: #ffc107;
+            color: #424242;
+            padding: 0;
+            margin: 0; }
+        .swp_home img {
+            max-width: 100%; }
+        @media (min-width: 701px) {
+            .swp_home img {
+                max-width: 1000px; } }
+        .swp_home a, .swp_home a:hover, .swp_home a:visited {
+            font-weight: bold;
+            color: #F57F17;
+            text-decoration: none; }
+
+        #swp_transition_village {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            height: 50px;
+            height: 5em;
+            background: url("village4.svg") bottom space, url("village3.svg") top space;
+            background-color: #ffc107;
+            background-position: 1em -2em; }
+
+        .swp_wassadou {
+            width: 100%;
+            background-color: #795548;
+            color: #EFEBE9;
+            padding: 0;
+            margin: 0; }
+        .swp_wassadou img {
+            max-width: 100%; }
+        @media (min-width: 701px) {
+            .swp_wassadou img {
+                max-width: 1000px; } }
+        .swp_wassadou a, .swp_wassadou a:hover, .swp_wassadou a:visited {
+            font-weight: bold;
+            color: #D7CCC8;
+            text-decoration: none; }
+        footer {
+            background-color: #424242; }
+
+        h1, h2 {
+            font-weight: 100; }
+
+        h1 {
+            font-size: 45px;
+            line-height: 48px; }
+
+        h2 {
+            font-size: 35px;
+            line-height: 38px; }
+
+        .swp_lead {
+            font-weight: 300;
+            font-size: 20px; }
+
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 28px;
+                line-height: 30px; }
+            h2 {
+                font-size: 22px;
+                line-height: 24px; }
+            .swp_lead {
+                font-size: 16px;
+                line-height: 18px; } }
+        .content {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column; }
+
+        .swp_footer {
+            color: #9e9e9e;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            font-size: 14px; }
+        .swp_footer .swp_society {
+            color: white; }
+        .swp_footer div {
+            margin-right: 1em;
+            width: 100%; }
+        .swp_footer .swp_footer__middle {
+            -webkit-flex-grow: 1;
+            flex-grow: 1; }
+        .swp_footer .swp_footer__right {
+            text-align: right; }
+
+        .swp_footer .is-large-screen {
+            padding: 0.7em;
+            margin: 0.7em 1em; }
+
+        .swp_footer .is-small-screen {
+            padding: 0;
+            margin: 0 1em;
+            font-size: 12px; }
+        .center {
+            text-align: center; }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+
+    </nav>
+</header>
+<main>
+
+<div class="content">
+    <article class="swp_home" id="home">
+        <swp-home>
+            <h1>Ce site a changé d'adresse</h1>
+            <p class="dm_lead">
+                Retrouvez nous sur l'URL <a style="color: black" href="https://www.solidarite-wassadou.fr/">https://www.solidarite-wassadou.fr/</a>
+            </p>
+            <div class="center"><img src="logo_long2.svg" alt="Solidarité Wassadou Pont-Trambouze"/></div>
+
+        </swp-home>
+
+    </article>
+    <div id="swp_transition_village"></div>
+</div>
+    <footer>
+        <div class="swp_footer">
+            <div class="is-small-screen">
+                <p>
+                    Solidarité Wassadou Pont Trambouze<br>
+                    SIREN : 522 502 079, au RCS de Lyon<br>
+                </p>
+            </div>
+            <div class="is-large-screen">
+                <div class="swp_footer__middle">
+                    <div class="swp_society">
+                        Solidarité Wassadou Pont Trambouze
+                    </div>
+                    <div>Association loi 1901</div>
+                    <div>SIREN : 522 502 079, au RCS de Lyon</div>
+                </div>
+
+                <div class="swp_footer__right">
+                    All right reserved - @2017 Guillaume EHRET
+                </div>
+            </div>
+        </div>
+    </footer>
+</main>
+<script async defer src="https://cdn.polyfill.io/v2/polyfill.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
