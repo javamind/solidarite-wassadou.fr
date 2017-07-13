@@ -16,7 +16,7 @@ module.exports = function () {
     'index.html' : {
       keywords: "Solidarité Wassadou Pont-Trambouze Sénégal",
       title: "Solidarité Wassadou Pont-Trambouze",
-      description : "Site de l'association solidartité Wassadou à Pont Trambouze qui aide au développement du village de Wassadou au Sénégal (développement axé sur la jeunesse et l'éducation)"
+      description : "Site de l'association Solidarité Wassadou à Pont Trambouze qui aide au développement du village de Wassadou au Sénégal (développement axé sur la jeunesse et l'éducation)"
     },
     'blog.html' : {
       keywords: 'Solidarité Wassadou Pont-Trambouze Sénégal Blog',
