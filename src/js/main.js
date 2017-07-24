@@ -20,7 +20,7 @@ window.app = (function() {
     let swFile = path ? path + 'service-worker.js' : 'service-worker.js';
 
     if ('serviceWorker' in navigator &&
-      (window.location.protocol === 'https:' && !isLocalhost)) {
+      (window.location.protocol === 'https:' && !isLocalhost) && false) {
       navigator.serviceWorker.register(`${swFile}`)
         .then(function(registration) {
           // Check to see if there's an updated version of service-worker.js with

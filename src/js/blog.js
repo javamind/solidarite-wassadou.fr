@@ -11,6 +11,7 @@ window.blog = (function () {
 
   let database = firebase.database();
   let nbElementDisplayed = 2;
+  const isDevPage = document.currentScript.text.indexOf('dev=true') > -1;
 
   /**
    * Converts result to an array
@@ -34,7 +35,7 @@ window.blog = (function () {
    */
   function _loadBlogIndex(cb) {
     database
-      .ref('/blogs')
+      .ref(isDevPage ? '/blogsDev' : '/blogs')
       .startAt()
       .on('value', (snapshot) => cb(_transformResult(snapshot.val())));
   }

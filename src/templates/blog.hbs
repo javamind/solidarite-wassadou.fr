@@ -155,8 +155,9 @@
                             <h1 >{{ title }}</h1>
                             <div class="swp-blog--info-date"><small>Ecrit le {{ revdate }}</small></div>
                             <div id="blog-keywords"></div>
-                            <div></div>
-                            {{{ contents }}}
+                            <div class="swp-blog--content">
+                                {{{ contents }}}
+                            </div>
                         </article>
 
                     <swp-header>
@@ -207,7 +208,7 @@
 <script async defer src="../../js/main.js">blog=true;</script>
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-database.js"></script>
-<script src="../../js/blog.js">blog=true;</script>
+<script src="../../js/blog.js">blog=true;dev={{modedev}}</script>
 <script>
     window.addEventListener("load", function(){
         blog.findPreviousBlogpost('{{filename}}');

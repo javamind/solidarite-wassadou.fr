@@ -5,7 +5,7 @@ const fs = require('fs');
 const gutil = require('gulp-util');
 const PluginError = gutil.PluginError;
 
-module.exports = function () {
+module.exports = function (modedev) {
 
   const pageMetadata = {
     '404.html' : {
@@ -39,7 +39,8 @@ module.exports = function () {
       description: () => pageMetadata[file.fileName].description,
       contents: () => new Buffer(html),
       blog: () => pageMetadata[file.fileName].blog,
-      canonicalUrl: () => file.fileName
+      canonicalUrl: () => file.fileName,
+      modedev: () => modedev
     };
 
     next(null, file);

@@ -14,7 +14,7 @@ const asciidoctorOptions = {
   },
 }
 
-module.exports = function ({ includes } = {}) {
+module.exports = function (modedev) {
 
   return map(async (file, next) => {
 
@@ -24,6 +24,7 @@ module.exports = function ({ includes } = {}) {
     const asciidoc = file.contents.toString();
     file.ast = asciidoctor.load(asciidoc, opts);
     file.attributes = file.ast.getAttributes();
+    file.attributes.strdate = file.attributes.revdate;
 
     // make all model properties accessible through fat-arrow "getters"
     // this way, file.* values can be changed before templating
@@ -35,10 +36,10 @@ module.exports = function ({ includes } = {}) {
       'github-edit-url': () => file.git.githubEditUrl,
       filename: file.path.substring(file.path.lastIndexOf("/") + 1, file.path.lastIndexOf(".")),
       dir: file.path.substring(file.path.lastIndexOf("blog/") + 5, file.path.lastIndexOf("/")),
-      category: file.attributes.category,
       teaser: file.attributes.teaser,
       imgteaser: file.attributes.imgteaser,
       firebaseApiKey: firebaseConfig.apiKey,
+      modedev: () => modedev
     };
 
     next(null, file);

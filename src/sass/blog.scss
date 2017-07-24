@@ -16,3 +16,21 @@ swp-article {
 .swp-blog--previous{
   padding: 2em;
 }
+
+.swp-blog--content{
+  background-color: #FFECB3;
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 4px;
+
+  img {
+    max-width: 90%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: auto;
+  }
+
+  .content {
+    text-align: center;
+  }
+}

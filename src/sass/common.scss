@@ -32,9 +32,6 @@ $header__heigth: 64px;
 
   img {
     max-width: 100%;
-    @media (min-width: $min_width_tablet) {
-      max-width: 1000px;
-    }
   }
 }
 

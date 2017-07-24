@@ -136,3 +136,26 @@ h2{
     }
   }
 }
+
+.swp_button_donation {
+  border-radius: 4px;
+  font-size: 1.5em;
+  border: none;
+  background-color: #ffc107;
+  color: white;
+  max-width: 10em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  display: block;
+  @include swp_box__shadow;
+  padding: .75em .5em;
+
+  &:hover {
+    background-color: #ecb306;
+  }
+
+  //display: block;background: #70c24a;text-align: center;margin: auto;padding: .75em .5em;color: #000;
+}

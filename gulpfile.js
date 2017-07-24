@@ -76,15 +76,15 @@ gulp.task('blog-indexing', (cb) => {
     }
   });
   gulp.src('src/blog/**/*.adoc')
-    .pipe(asciidoctorRead())
+    .pipe(asciidoctorRead(modeDev))
     .pipe(asciidoctorConvert())
-    .pipe(asciidoctorIndexing())
+    .pipe(asciidoctorIndexing(modeDev))
     .on('end', () => cb())
 });
 
 gulp.task('blog-rss', (cb) => {
   gulp.src('src/blog/**/*.adoc')
-    .pipe(asciidoctorRead())
+    .pipe(asciidoctorRead(modeDev))
     .pipe(asciidoctorConvert())
     .pipe(asciidoctorRss('blog.xml'))
     .pipe(gulp.dest('build/dist/rss'))
@@ -93,7 +93,7 @@ gulp.task('blog-rss', (cb) => {
 
 gulp.task('blog', ['blog-indexing', 'blog-rss'], (cb) => {
   gulp.src('src/blog/**/*.adoc')
-    .pipe(asciidoctorRead())
+    .pipe(asciidoctorRead(modeDev))
     .pipe(asciidoctorConvert())
     .pipe(applyTemplate('src/templates/blog.hbs'))
     .pipe(highlightCode({selector: 'pre.highlight code'}))
@@ -178,7 +178,7 @@ gulp.task('copy', (cb) => {
 
 gulp.task('generate-service-worker', (cb) => {
   let config = {
-    cacheId: `solidarite-wassadou${moment().format('YYYY-MM-DD_ss')}`,
+    cacheId: `solidarite-wassadou`,
     // Determines whether the fetch event handler is included in the generated service worker code. It is useful to
     // set this to false in development builds, to ensure that features like live reload still work. Otherwise, the content
     // would always be served from the service worker cache.
