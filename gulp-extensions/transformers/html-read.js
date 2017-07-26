@@ -4,6 +4,7 @@ const map = require('map-stream')
 const fs = require('fs');
 const gutil = require('gulp-util');
 const PluginError = gutil.PluginError;
+const moment = require('moment');
 
 module.exports = function (modedev) {
 
@@ -38,6 +39,7 @@ module.exports = function (modedev) {
       title: () => pageMetadata[file.fileName].title,
       description: () => pageMetadata[file.fileName].description,
       contents: () => new Buffer(html),
+      gendate: () => moment().format('DD/mm/YYYY'),
       blog: () => pageMetadata[file.fileName].blog,
       canonicalUrl: () => file.fileName,
       modedev: () => modedev
