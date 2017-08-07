@@ -56,7 +56,8 @@
             max-height: 100vh;
             font-family: "Helvetica", "Arial", "sans-serif";
             padding: 0;
-            margin: 0; }
+            margin: 0;
+        }
 
         header {
             min-height: 64px;
@@ -68,35 +69,50 @@
             z-index: 99;
             transition-duration: 0.2s;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-property: max-height, box-shadow; }
+            transition-property: max-height, box-shadow;
+        }
+
         swp-home-blog {
             display: block;
             margin: 0 auto;
             max-width: 1600px;
-            padding: 20px 40px; }
+            padding: 20px 40px;
+        }
+
         main {
             height: calc(100vh - 64px);
             overflow-x: hidden;
             overflow-y: scroll;
-            background-color: #ffc107; }
+            background-color: #ffc107;
+        }
+
         img {
             max-width: 100%;
             height: auto;
         }
+
         * {
             box-sizing: border-box; /* pour maîtriser width et flex-basis */
         }
+
         .swp-social {
             min-width: 2em;
             max-width: 2em;
             width: 2em;
-            height: 2em; }
+            height: 2em;
+        }
+
         nav {
             display: -webkit-flex;
-            display: flex; }
+            display: flex;
+        }
+
         @media screen and (min-width: 901px) {
             nav {
-                padding-left: 1em; } }
+                padding-left: 1em;
+            }
+        }
+
         nav a {
             padding: 0 12px;
             color: rgba(255, 255, 255, 0.6);
@@ -106,23 +122,44 @@
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 500;
-            font-size: 13px; }
+            font-size: 13px;
+        }
+
         @media screen and (min-width: 901px) {
             nav a {
-                padding: 0 24px; } }
+                padding: 0 24px;
+            }
+        }
+
         nav a:hover {
-            background-color: #424242; }
+            background-color: #424242;
+        }
+
         nav .is-active {
             border-bottom: 4px solid white;
-            color: white; }
-        nav a > img {
-            padding-top: 16px; }
+            color: white;
+        }
 
-        .is-small-screen{display:none}
-        .is-large-screen{display:inherit}
-        @media screen and (max-width:900px){
-            .is-small-screen{display:inherit}
-            .is-large-screen{display:none}
+        nav a > img {
+            padding-top: 16px;
+        }
+
+        .is-small-screen {
+            display: none
+        }
+
+        .is-large-screen {
+            display: inherit
+        }
+
+        @media screen and (max-width: 900px) {
+            .is-small-screen {
+                display: inherit
+            }
+
+            .is-large-screen {
+                display: none
+            }
         }
     </style>
 </head>
@@ -151,22 +188,28 @@
                     <br>&nbsp;
                 </p>
                 <div class="swp_home_blog" id="blog">
-                        <article>
-                            <h1 >{{ title }}</h1>
-                            <div class="swp-blog--info-date"><small>Ecrit le {{ revdate }}</small></div>
-                            <div id="blog-keywords"></div>
-                            <div class="swp-blog--content">
-                                {{{ contents }}}
-                            </div>
-                        </article>
+                    <article>
+                        <h1>{{ title }}</h1>
+                        <div class="swp-blog--info-date">
+                            <small>Ecrit le {{ revdate }}</small>
+                        </div>
+                        <div id="blog-keywords"></div>
+                        <div class="swp-blog--content">
+                            {{{ contents }}}
+                        </div>
+                    </article>
 
                     <swp-header>
                         <div class="swp-blog--button">
                             <p>Partagez cet article</p>
-                            <button onclick="blog.sendSocial('twitter', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/twitter.svg" alt="Twitter" class="swp-social"></button>
-                            <button onclick="blog.sendSocial('google+', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/googlep.svg" alt="Github" class="swp-social"></button>
-                            <button onclick="blog.sendSocial('facebook', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/facebook.svg" alt="Facebook" class="swp-social"></button>
-                            <button onclick="blog.sendSocial('linkedin', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')"><img src="../../img/contact/linkedin.svg" alt="Linkedin" class="swp-social"></button>
+                            <button onclick="blog.sendSocial('twitter', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                <img src="../../img/contact/twitter.svg" alt="Twitter" class="swp-social"></button>
+                            <button onclick="blog.sendSocial('google+', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                <img src="../../img/contact/googlep.svg" alt="Github" class="swp-social"></button>
+                            <button onclick="blog.sendSocial('facebook', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                <img src="../../img/contact/facebook.svg" alt="Facebook" class="swp-social"></button>
+                            <button onclick="blog.sendSocial('linkedin', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                <img src="../../img/contact/linkedin.svg" alt="Linkedin" class="swp-social"></button>
                             <br>
                             <div id="previous-blogpost"></div>
                         </div>
@@ -192,7 +235,9 @@
                     </div>
                     <div>Association loi 1901</div>
                     <div>SIREN : 522 502 079, au RCS de Lyon</div>
-                    <div><small>Mise à jour le {{ gendate }}</small></div>
+                    <div>
+                        <small>Mise à jour le {{ gendate }}</small>
+                    </div>
                 </div>
 
                 <div class="swp_footer__right">
@@ -206,12 +251,12 @@
 <script async defer src="https://cdn.polyfill.io/v2/polyfill.min.js" crossorigin="anonymous"></script>
 <script async defer src="../../js/loadCSS.js"></script>
 <script async defer src="../../js/cssrelpreload.js"></script>
-<script async defer src="../../js/main.js">blog=true;</script>
+<script async defer src="../../js/main.js">blog = true;</script>
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-database.js"></script>
-<script src="../../js/blog.js">blog=true;dev={{modedev}}</script>
+<script src="../../js/blog.js">blog = true;dev ={{modedev}}</script>
 <script>
-    window.addEventListener("load", function(){
+    window.addEventListener("load", function () {
         blog.findPreviousBlogpost('{{filename}}');
     });
 </script>
