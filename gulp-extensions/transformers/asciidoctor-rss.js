@@ -14,15 +14,15 @@ module.exports = function (filename) {
 
   let xml = `
     <title>
-        Le blog de Dev-Mind - articles sur le développement (Java, Web, ...) et différents sujets liés aux méthodes agiles.
+        Le blog de Solidarité Wassadou
     </title>
     <description>
-        Le blog Dev-Mind regroupe des articles des interviews sur des sujets divers allant de la programmation Java 
-        JavaScript aux méthodes agiles Environnement, Blogs ...
+        Le blog Dev-Mind regroupe des articles des interviews parlant de nos actions et de la vie locale su village
+        de Wassadou au Sénégal
     </description>
     <copyright>Copyright Dev-Mind</copyright>
     <link>https://www.dev-mind.fr/rss/blog.xml</link>
-    <atom:link href="https://www.dev-mind.fr/rss/blog.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://www.solidarite-wassadou.fr/rss/blog.xml" rel="self" type="application/rss+xml"/>
     <pubDate>${moment().format('YYYY-MM-DD hh:mm:ss')}</pubDate>
     <image>
       <url>https://www.dev-mind.fr/img/logo/logo_200.png</url>
@@ -36,12 +36,12 @@ module.exports = function (filename) {
     xml += `
       <item>
         <link>
-            https://www.dev-mind.fr/blog/${dir}/${file.path.substring(file.path.lastIndexOf("/") + 1, file.path.lastIndexOf("."))}.html
+            https://www.www.solidarite-wassadou.fr/blog/${dir}/${file.path.substring(file.path.lastIndexOf("/") + 1, file.path.lastIndexOf("."))}.html
         </link>
         <title>${file.attributes.doctitle}</title>
         <description>${file.attributes.teaser}</description>
         <pubDate>${moment(file.attributes.revdate, 'YYYY-mm-DD').format('DD/mm/YYYY')}</pubDate>
-        <enclosure url="https://www.dev-mind.fr/img/blog/${dir}/${file.attributes.imgteaser}"/>
+        <enclosure url="https://www.solidarite-wassadou.fr/img/blog/${dir}/${file.attributes.imgteaser}"/>
       </item>
       `;
   }
