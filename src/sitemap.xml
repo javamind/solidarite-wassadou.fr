@@ -23,4 +23,8 @@
         <loc>https://www.solidarite-wassadou.fr/blog/2017/ecole_wassadou.html</loc>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>https://www.solidarite-wassadou.fr/blog/2017/soiree_pizza.html</loc>
+        <priority>0.5</priority>
+    </url>
 </urlset>
