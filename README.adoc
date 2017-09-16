@@ -1,4 +1,4 @@
-image::src/images/logo.svg[Solidarité Wassadou Pont Trambouze]
+image::src/images/logo_long.png[Solidarité Wassadou Pont Trambouze]
 
 Site de l'association
 
