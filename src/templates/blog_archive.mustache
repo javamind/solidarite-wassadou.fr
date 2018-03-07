@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="css/blog-list.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="js/main.js" as="script">
+    {{> _html_header}}
+</head>
+<body class="dev-mind">
+{{> _page_header}}
+<main>
+    <div class="swp_home" id="home">
+        <swp-home>
+            <p class="swp_logo center">
+                <img src="img/logo_long2.svg" alt="Solidarité Wassadou Pont-Trambouze"/>
+                <br>&nbsp;
+            </p>
+            {{#articleByYears}}
+                <h1 class="center">Articles {{key}}</h1><br>
+                <div class="swp-blog--container">
+                    <div class="swp-blog--container-article">
+                        {{#value}}
+                            <article class="swp-blog--article-archive"
+                                     onclick="document.location.href='blog/{{dir}}/{{filename}}.html'">
+                                <h2><a href="blog/{{dir}}/{{filename}}.html">{{doctitle}}</a></h2>
+                                <p style="padding: 0;margin: 0">
+                                    <small>{{date}}</small>
+                                </p>
+                                <div class="swp-blog--imgteaser"><img class="swp-img--lazyload"
+                                                                     data-src="{{{imgteaser}}}"/></div>
+                                <p class="swp-blog--teaser">{{teaser}}</p>
+                                <p style="padding: 0;margin: 0">
+                                    <small>{{keywords}}</small>
+                                </p>
+                            </article>
+                        {{/value}}
+                    </div>
+                </div>
+            {{/articleByYears}}
+
+            <div class="swp-blog--button">
+                <button onclick="document.location.href='rss/blog.xml'">Flux RSS</button>
+            </div>
+        </swp-home>
+    </div>
+    <div id="swp_transition_village"></div>
+    {{> _page_footer}}
+</main>
+{{> _html_footer}}
+</body>
+</html>

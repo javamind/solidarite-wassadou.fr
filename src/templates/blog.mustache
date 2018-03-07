@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="preload" href="../../css/main.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="../../css/blog.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="../../css/blog-list.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="../../js/main.js" as="script">
+    <link rel="preload" href="../../js/blog.js" as="script">
+    {{> _html_header}}
+</head>
+<body class="dev-mind">
+{{> _page_header}}
+<main>
+    <div class="content">
+        <article class="swp_home" id="home">
+            <swp-article>
+                <p class="swp_logo center">
+                    <img src="../../img/logo_long2.svg" alt="Solidarité Wassadou Pont-Trambouze"/>
+                    <br>&nbsp;
+                    {{#modedev}}
+                        <h2>MODE DEV</h2>
+                    {{/modedev}}
+                </p>
+                    <div class="swp_home_blog" id="blog">
+                        <article>
+                            <h1>{{ title }}</h1>
+                            <div class="swp-blog--info-date">
+                                <small>Ecrit le {{ revdate }}</small>
+                                <small id="nbview"></small>
+                            </div>
+                            <div id="blog-keywords"></div>
+                            <div class="swp-blog--content">
+                                {{{ contents }}}
+                            </div>
+                        </article>
+
+                        <swp-header>
+                            <div class="swp-blog--button">
+                                <p>Partagez cet article</p>
+                                <button onclick="blog.sendSocial('twitter', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                    <img src="../../img/contact/twitter.svg" alt="Twitter" class="swp-social"></button>
+                                <button onclick="blog.sendSocial('google+', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                    <img src="../../img/contact/googlep.svg" alt="Github" class="swp-social"></button>
+                                <button onclick="blog.sendSocial('facebook', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                    <img src="../../img/contact/facebook.svg" alt="Facebook" class="swp-social"></button>
+                                <button onclick="blog.sendSocial('linkedin', 'https://www.solidarite-wassadou.fr/blog/{{dir}}/{{filename}}.html', '{{ title }}')">
+                                    <img src="../../img/contact/linkedin.svg" alt="Linkedin" class="swp-social"></button>
+                                <br>
+                                <div id="previous-blogpost"></div>
+                            </div>
+                        </swp-header>
+                    </div>
+            </swp-article>
+        </article>
+    </div>
+    {{> _page_footer}}
+</main>
+<script async defer src="../../js/loadCSS.js"></script>
+<script async defer src="../../js/cssrelpreload.js"></script>
+<script async defer src="../../js/main.js"></script>
+<script async defer src="../../js/dmanalytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-database.js"></script>
+<script src="../../js/blog.js">blog = true;</script>
+<script>
+    window.addEventListener("load", function () {
+        blog.init('{{filename}}', {{modedev}});
+    });
+</script>
+</body>
+</html>

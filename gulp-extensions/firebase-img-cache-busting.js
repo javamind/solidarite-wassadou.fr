@@ -2,15 +2,15 @@
 
 const gutil = require('gulp-util');
 const PluginError = gutil.PluginError;
-const moment = require('moment');
 const map = require('map-stream');
 const firebase = require("firebase");
-const firebaseConfig = require("../../firebase.json");
+const firebaseConfig = require("../firebase.js");
 const fs = require('fs');
 const path = require('path');
 
 /**
- * This plugin parse all the asciidoc files to build a Json index file with metadata
+ * This plugin is used to update the page index in Firebase and update the images reference after the cache
+ * busting task
  */
 module.exports = (cacheBustingFile, modeDev) => {
   if (!cacheBustingFile) throw new PluginError('firebase-img-cache-busting', 'Missing rev file with file hashes for firebase-img-cache-busting');
@@ -20,7 +20,8 @@ module.exports = (cacheBustingFile, modeDev) => {
       apiKey: firebaseConfig.apiKey,
       authDomain: firebaseConfig.authDomain,
       databaseURL: firebaseConfig.databaseURL,
-      storageBucket: firebaseConfig.storageBucket
+      storageBucket: firebaseConfig.storageBucket,
+      messagingSenderId: firebaseConfig.messagingSenderId
     });
   }
   const database = firebase.database();
@@ -36,7 +37,7 @@ module.exports = (cacheBustingFile, modeDev) => {
     console.log('firebase-img-cache-busting finished');
   });
 
-  const cacheBustingPath = path.resolve(__dirname, '../..', cacheBustingFile);
+  const cacheBustingPath = path.resolve(__dirname, '..', cacheBustingFile);
   const template = JSON.parse(fs.readFileSync(cacheBustingPath, 'utf8'));
 
   return map(async (file, next) => {
@@ -45,12 +46,14 @@ module.exports = (cacheBustingFile, modeDev) => {
     database
       .ref(`${modeDev ? 'devblogs' : 'blogs'}/${filename}`)
       .on('value', (snapshot) => {
-        const imgteaser = snapshot.val().imgteaser ? snapshot.val().imgteaser.replace('../../img/', '') : undefined;
-        if (imgteaser && template[imgteaser]) {
-          const updates = {};
-          updates[`blogs/${filename}/imgteaser`] = '../../img/' + template[imgteaser];
-          firebase.database().ref().update(updates);
-          console.log(`update [${'../../img/' + template[imgteaser]}]`)
+        if(snapshot.val()){
+          const imgteaser = snapshot.val().imgteaser ? snapshot.val().imgteaser.replace('../../img/', '') : undefined;
+          if (imgteaser && template[imgteaser]) {
+            const updates = {};
+            updates[`blogs/${filename}/imgteaser`] = '../../img/' + template[imgteaser];
+            firebase.database().ref().update(updates);
+            console.log(`update [${'../../img/' + template[imgteaser]}]`)
+          }
         }
         next(null, file);
       })

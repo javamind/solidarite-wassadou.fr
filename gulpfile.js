@@ -6,20 +6,24 @@ const path = require('path');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
-const runSequence = require('run-sequence');
-const swPrecache = require('sw-precache');
-const moment = require('moment');
+const wbBuild = require('workbox-build');
 
 const $ = require('gulp-load-plugins')();
 
-const asciidoctorRead = require('./gulp-extensions/transformers/asciidoctor-read');
-const asciidoctorConvert = require('./gulp-extensions/transformers/asciidoctor-convert');
-const asciidoctorIndexing = require('./gulp-extensions/transformers/asciidoctor-indexing');
-const asciidoctorRss = require('./gulp-extensions/transformers/asciidoctor-rss');
-const htmlRead = require('./gulp-extensions/transformers/html-read');
-const applyTemplate = require('./gulp-extensions/transformers/apply-template');
-const highlightCode = require('./gulp-extensions/transformers/highlight-code');
-const firebaseImgCacheBusting = require('./gulp-extensions/transformers/firebase-img-cache-busting');
+const convertToHtml = require('./gulp-extensions/convert-to-html');
+const convertToBlogList = require('./gulp-extensions/convert-to-blog-list');
+const convertToBlogPage = require('./gulp-extensions/convert-to-blog-page');
+const convertToJson = require('./gulp-extensions/convert-to-json');
+const convertToRss = require('./gulp-extensions/convert-to-rss');
+const convertToSitemap = require('./gulp-extensions/convert-to-sitemap');
+const readAsciidoc = require('./gulp-extensions/read-asciidoctor');
+const readHtml = require('./gulp-extensions/read-html');
+const readIndex = require('./gulp-extensions/read-index');
+const applyTemplate = require('./gulp-extensions/apply-template');
+const highlightCode = require('./gulp-extensions/highlight-code');
+const firebaseIndexing = require('./gulp-extensions/firebase-indexing');
+const fileExist = require('./gulp-extensions/file-exist');
+
 
 const AUTOPREFIXER_BROWSERS = [
   'ie >= 11',
@@ -34,17 +38,28 @@ const AUTOPREFIXER_BROWSERS = [
 ];
 
 const HTMLMIN_OPTIONS = {
-  removeComments: true,
-  collapseWhitespace: true,
-  collapseBooleanAttributes: true,
-  removeAttributeQuotes: true,
-  removeRedundantAttributes: true,
-  removeEmptyAttributes: true,
-  removeScriptTypeAttributes: true,
-  removeStyleLinkTypeAttributes: true,
-  removeOptionalTags: true,
-  minifyCSS: true
+    removeComments: true,
+    collapseWhitespace: true,
+    collapseBooleanAttributes: true,
+    removeAttributeQuotes: false,
+    removeRedundantAttributes: true,
+    removeEmptyAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    removeOptionalTags: true,
+    minifyCSS: true,
+    minifyJS: true,
+    jsmin:true
 };
+
+const MUSTACHE_PARTIALS = [
+    {key: '_html_header', path: 'src/templates/_html_header.mustache'},
+    {key: '_page_header', path: 'src/templates/_page_header.mustache'},
+    {key: '_page_footer', path: 'src/templates/_page_footer.mustache'},
+    {key: '_html_footer', path: 'src/templates/_html_footer.mustache'}
+];
+
+const CACHE_BUSTING_EXTENSIONS = ['.js', '.css', '.html', '.xml'];
 
 let modeDev = false;
 
@@ -68,39 +83,75 @@ gulp.task('styles', (cb) => {
     .on('end', () => cb())
 });
 
-gulp.task('blog-indexing', (cb) => {
-  // Hack to be able to stop the task when the async firebase requests are complete
-  gulp.on('stop', () => {
-    if(!modeDev) {
-      process.nextTick(() => process.exit(0));
-    }
-  });
-  gulp.src('src/blog/**/*.adoc')
-    .pipe(asciidoctorRead(modeDev))
-    .pipe(asciidoctorConvert())
-    .pipe(asciidoctorIndexing(modeDev))
-    .on('end', () => cb())
+gulp.task('blog-firebase', (cb) => {
+    // Hack to be able to stop the task when the async firebase requests are complete
+    gulp.on('stop', () => {
+        if (!modeDev) {
+            process.nextTick(() => process.exit(0));
+        }
+    });
+    gulp.src('src/blog/**/*.adoc')
+        .pipe(readAsciidoc(modeDev))
+        .pipe(firebaseIndexing(modeDev))
+        .on('end', () => cb())
 });
 
-gulp.task('blog-rss', (cb) => {
-  gulp.src('src/blog/**/*.adoc')
-    .pipe(asciidoctorRead(modeDev))
-    .pipe(asciidoctorConvert())
-    .pipe(asciidoctorRss('blog.xml'))
-    .pipe(gulp.dest('build/dist/rss'))
-    .on('end', () => cb())
+gulp.task('blog-indexing', () =>
+    gulp.src('src/blog/**/*.adoc')
+        .pipe(readAsciidoc(modeDev))
+        .pipe(convertToHtml())
+        .pipe(convertToJson('blogindex.json'))
+        .pipe(gulp.dest('build/.tmp'))
+);
+
+gulp.task('blog-rss', () =>
+    gulp.src('build/.tmp/blogindex.json')
+        .pipe($.wait2(() => fileExist('build/.tmp/blogindex.json')))
+        .pipe(readIndex())
+        .pipe(convertToRss('blog.xml'))
+        .pipe(gulp.dest('build/dist/rss'))
+);
+
+gulp.task('blog-list', () =>
+    gulp.src('build/.tmp/blogindex.json')
+        .pipe($.wait2(() => fileExist('build/.tmp/blogindex.json')))
+        .pipe(readIndex())
+        .pipe(convertToBlogList('src/templates/blog_list.mustache', MUSTACHE_PARTIALS, 'blog.html', 4))
+        .pipe(gulp.dest('build/.tmp'))
+        .pipe($.htmlmin(HTMLMIN_OPTIONS))
+        .pipe(gulp.dest('build/dist'))
+);
+
+gulp.task('blog-archive', () =>
+    gulp.src('build/.tmp/blogindex.json')
+        .pipe($.wait2(() => fileExist('build/.tmp/blogindex.json')))
+        .pipe(readIndex())
+        .pipe(convertToBlogList('src/templates/blog_archive.mustache', MUSTACHE_PARTIALS, 'blog_archive.html'))
+        .pipe(gulp.dest('build/.tmp'))
+        .pipe($.htmlmin(HTMLMIN_OPTIONS))
+        .pipe(gulp.dest('build/dist'))
+);
+
+gulp.task('blog-page', ['blog-indexing', 'blog-list', 'blog-rss', 'blog-archive'], (cb) => {
+    gulp.src('src/blog/**/*.adoc')
+        .pipe(readAsciidoc(modeDev))
+        .pipe(convertToHtml())
+        .pipe(highlightCode({selector: 'pre.highlight code'}))
+        .pipe(convertToBlogPage('src/templates/blog.mustache', MUSTACHE_PARTIALS, 'build/.tmp/blogindex.json'))
+
+        .pipe(gulp.dest('build/.tmp/blog'))
+        .pipe($.htmlmin(HTMLMIN_OPTIONS))
+        .pipe(gulp.dest('build/dist/blog'))
+        .on('end', () => cb())
 });
 
-gulp.task('blog', ['blog-indexing', 'blog-rss'], (cb) => {
-  gulp.src('src/blog/**/*.adoc')
-    .pipe(asciidoctorRead(modeDev))
-    .pipe(asciidoctorConvert())
-    .pipe(applyTemplate('src/templates/blog.hbs'))
-    .pipe(highlightCode({selector: 'pre.highlight code'}))
-    .pipe(gulp.dest('build/.tmp/blog'))
-    .pipe($.htmlmin(HTMLMIN_OPTIONS))
-    .pipe(gulp.dest('build/dist/blog'))
-    .on('end', () => cb())
+gulp.task('blog', cb => {
+    $.sequence(
+        'blog-indexing',
+        'blog-page',
+        ['blog-list', 'blog-rss', 'blog-archive'],
+        cb
+    )
 });
 
 gulp.task('lint', () =>
@@ -110,135 +161,156 @@ gulp.task('lint', () =>
     .pipe($.if(!browserSync.active, $.eslint.failOnError()))
 );
 
-gulp.task('html', () =>
-  gulp
-    .src('src/partials/**/*.html')
-    .pipe(htmlRead(modeDev))
-    .pipe(applyTemplate('src/templates/site.hbs'))
-    .pipe($.size({title: 'html', showFiles: true}))
-    .pipe(gulp.dest('build/.tmp'))
-    .pipe($.htmlmin(HTMLMIN_OPTIONS))
-    .pipe(gulp.dest('build/dist'))
-);
+gulp.task('html-indexing', () =>
+    gulp.src(`src/html/**/*.html`)
+        .pipe(readHtml(modeDev))
+        .pipe(convertToJson('pageindex.json'))
+        .pipe(gulp.dest('build/.tmp')));
+
+gulp.task('html', ['html-indexing'], () =>
+    gulp.src(`src/html/**/*.html`)
+        .pipe(readHtml(modeDev))
+        .pipe(applyTemplate(`src/templates/site.mustache`, MUSTACHE_PARTIALS))
+        .pipe($.size({title: 'html', showFiles: true}))
+        .pipe(gulp.dest('build/.tmp'))
+        .pipe($.htmlmin(HTMLMIN_OPTIONS))
+        .pipe(gulp.dest('build/dist')));
 
 gulp.task('local-js', () =>
-  gulp.src(['src/js/*.js'])
-    .pipe($.sourcemaps.init())
-    .pipe($.babel({
-      presets: ['es2015']
-    }))
-    .pipe($.if(!modeDev, $.rev()))
-    .pipe($.sourcemaps.write())
-    .pipe($.uglify({preserveComments: 'some'}))
-    .pipe($.size({title: 'scripts'}))
-    .pipe(gulp.dest('build/dist/js'))
-    .pipe($.if(!modeDev, $.rev.manifest()))
-    .pipe(gulp.dest('build/dist/js'))
+    gulp.src(['src/js/*.js'])
+        .pipe($.sourcemaps.init())
+        .pipe($.babel({
+            presets: ['es2015']
+        }))
+        .pipe($.rev())
+        .pipe($.sourcemaps.write())
+        .pipe($.uglify({preserveComments: 'some'}))
+        .pipe($.size({title: 'scripts'}))
+        .pipe(gulp.dest('build/dist/js'))
+        .pipe($.rev.manifest())
+        .pipe(gulp.dest('build/dist/js'))
 );
 
 gulp.task('vendor-js', () =>
-  gulp.src(['node_modules/fg-loadcss/src/*.js'])
-    .pipe($.uglify({preserveComments: 'some'}))
-    .pipe($.size({title: 'scripts'}))
-    .pipe(gulp.dest('build/dist/js'))
-    );
-
-gulp.task('images-min', () =>
-  gulp.src('src/images/**/*.{svg,png,jpg}')
-    .pipe(imagemin([imagemin.gifsicle(), imageminMozjpeg(), imagemin.optipng(), imagemin.svgo()], {
-      progressive: true,
-      interlaced: true,
-      arithmetic: true,
-    }))
-    .pipe(gulp.dest('build/.tmp/img'))
-    .pipe($.if('**/*.{jpg,png}', $.webp()))
-    .pipe($.size({title: 'images', showFiles: false}))
-    .pipe(gulp.dest('build/.tmp/img'))
+    gulp.src(['node_modules/fg-loadcss/src/*.js'])
+        .pipe($.uglify({preserveComments: 'some'}))
+        .pipe(gulp.dest('build/dist/js'))
 );
 
+/**
+ * Image pre processing is used to minify these assets
+ */
+gulp.task('images-pre', () =>
+    gulp.src('src/images/**/*.{svg,png,jpg}')
+        .pipe($.if(!modeDev, imagemin([imagemin.gifsicle(), imageminMozjpeg(), imagemin.optipng(), imagemin.svgo()], {
+            progressive: true,
+            interlaced: true,
+            arithmetic: true,
+        })))
+        .pipe(gulp.dest('build/.tmp/img'))
+        .pipe($.if('**/*.{jpg,png}', $.webp()))
+        .pipe($.size({title: 'images', showFiles: false}))
+        .pipe(gulp.dest('build/.tmp/img'))
+);
+
+/**
+ * Images generated in image pre processing are renamed with a MD5 (cache busting) and copied
+ * in the dist directory
+ */
 gulp.task('images', () =>
-  gulp.src('build/.tmp/img/**/*.{svg,png,jpg,webp}')
-    .pipe($.if(!modeDev, $.rev()))
-    .pipe(gulp.dest('build/dist/img'))
-    .pipe($.if(!modeDev, $.rev.manifest()))
-    .pipe(gulp.dest('build/dist/img'))
+    gulp.src('build/.tmp/img/**/*.{svg,png,jpg,webp}')
+    //.pipe(gulp.dest('build/dist/img'))
+        .pipe($.rev())
+        .pipe(gulp.dest('build/dist/img'))
+        .pipe($.rev.manifest())
+        .pipe(gulp.dest('build/dist/img'))
+);
+
+/**
+ * Image post processing is used to copy in dist directory images used without cache busting id
+ */
+gulp.task('images-post', () =>
+    gulp.src('src/images/**/logo*.*')
+        .pipe(gulp.dest('build/dist/img'))
 );
 
 gulp.task('copy', (cb) => {
-  gulp.src([
-    'src/*.{ico,html,txt,json,webapp,xml}',
-    'src/.htaccess'
-  ], {
-    dot: true
-  })
-    .pipe($.size({title: 'copy', showFiles: true}))
-    .pipe(gulp.dest('build/dist'))
-    .on('end', () => cb())
+    gulp.src([
+        'src/*.{ico,html,txt,json,webapp,xml}',
+        'src/.htaccess'
+    ], {
+        dot: true
+    })
+        .pipe($.size({title: 'copy', showFiles: true}))
+        .pipe(gulp.dest('build/dist'))
+        .on('end', () => cb())
 });
 
-gulp.task('generate-service-worker', (cb) => {
-  let config = {
-    cacheId: `solidarite-wassadou`,
-    // Determines whether the fetch event handler is included in the generated service worker code. It is useful to
-    // set this to false in development builds, to ensure that features like live reload still work. Otherwise, the content
-    // would always be served from the service worker cache.
-    handleFetch: true,
-    runtimeCaching: [{
-      urlPattern: '/(.*)',
-      handler: 'networkFirst',
-      options: {
-        networkTimeoutSeconds: 3,
-        maxAgeSeconds: 7200
-      }
-    }],
-    staticFileGlobs: ['build/dist/**/*.{js,html,css,png,jpg,json,gif,svg,webp,eot,ttf,woff,woff2,gz}'],
-    stripPrefix: 'build/dist',
-    verbose: true
-  };
+gulp.task('sitemap', () =>
+    gulp.src('build/.tmp/*index.json')
+        .pipe(readIndex())
+        .pipe(convertToSitemap())
+        .pipe(gulp.dest('build/dist'))
+);
 
-  swPrecache.write(`build/.tmp/service-worker.js`, config, cb);
+gulp.task('service-worker', ['service-worker-bundle', 'service-worker-resource'], () =>
+    gulp.src(`build/.tmp/sw.js`)
+        .pipe($.sourcemaps.init())
+        .pipe($.sourcemaps.write())
+        .pipe($.uglify({preserveComments: 'none'}))
+        .pipe($.size({title: 'scripts'}))
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest(`build/dist`))
+);
+
+gulp.task('service-worker-resource', () =>
+    gulp.src(`node_modules/workbox-sw/build/importScripts/workbox-sw.prod*`)
+        .pipe($.rename((path) => path.basename = 'workbox-sw.prod'))
+        .pipe(gulp.dest(`build/dist`))
+);
+
+gulp.task('service-worker-bundle', () => {
+    return wbBuild.injectManifest({
+        swSrc: 'src/sw.js',
+        swDest: 'build/.tmp/sw.js',
+        globDirectory: './build/dist',
+        //staticFileGlobs: ['**\/*.{js,html,css,png,jpg,json,gif,svg,webp,eot,ttf,woff,woff2,gz}']
+        // we don't load image files on SW precaching step
+        staticFileGlobs: ['**\/*.{js,html,css,svg}']
+    })
+        .catch((err) => {
+            console.log('[ERROR] This happened: ' + err);
+        });
 });
 
-gulp.task('service-worker', ['generate-service-worker'], (cb) => {
-  gulp.src(`build/.tmp/service-worker.js`)
-    .pipe($.sourcemaps.init())
-    .pipe($.sourcemaps.write())
-    .pipe($.uglify({preserveComments: 'none'}))
-    .pipe($.size({title: 'scripts'}))
-    .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest(`build/dist`))
-    .on('end', () => cb())
-});
+gulp.task('cache-busting-dev', () =>
+    gulp.src(['build/dist/**/*.{html,js,css}'])
+        .pipe($.revReplace({manifest: gulp.src('build/dist/img/rev-manifest.json'), replaceInExtensions: CACHE_BUSTING_EXTENSIONS}))
+        .pipe($.revReplace({manifest: gulp.src('build/dist/css/rev-manifest.json')}))
+        .pipe($.revReplace({manifest: gulp.src('build/dist/js/rev-manifest.json')}))
+        .pipe(gulp.dest('build/dist'))
+);
 
-gulp.task('cache-busting', (cb) => {
-  const replaceInExtensions = ['.js', '.css', '.html', '.xml'];
-  const manifestImg = gulp.src('build/dist/img/rev-manifest.json');
-  const manifestCss = gulp.src('build/dist/css/rev-manifest.json');
-  const manifestJs = gulp.src('build/dist/js/rev-manifest.json');
-
-  gulp.src(['build/dist/blog/**/*.html'])
-    .pipe(firebaseImgCacheBusting('build/dist/img/rev-manifest.json',modeDev));
-
-  gulp.src(['build/dist/**/*.{html,js,css,xml}'])
-    .pipe($.revReplace({manifest: manifestImg, replaceInExtensions: replaceInExtensions}))
-    .pipe($.revReplace({manifest: manifestCss}))
-    .pipe($.revReplace({manifest: manifestJs}))
-    .pipe(gulp.dest('build/dist'))
-    .on('end', () => cb());
-});
+gulp.task('cache-busting', () =>
+    gulp.src(['build/dist/**/*.{html,js,css,xml,json,webapp}'])
+        .pipe($.revReplace({manifest: gulp.src('build/dist/img/rev-manifest.json'), replaceInExtensions: CACHE_BUSTING_EXTENSIONS}))
+        .pipe($.revReplace({manifest: gulp.src('build/dist/css/rev-manifest.json')}))
+        .pipe($.revReplace({manifest: gulp.src('build/dist/js/rev-manifest.json')}))
+        .pipe(gulp.dest('build/dist'))
+);
 
 gulp.task('compress-svg', (cb) => {
-  gulp.src('build/dist/**/*.svg')
-    .pipe($.svg2z())
-    .pipe(gulp.dest('build/dist'))
-    .on('end', () => cb())
+    gulp.src('build/dist/**/*.svg')
+        .pipe($.svg2z())
+        .pipe(gulp.dest('build/dist'))
+        .on('end', () => cb())
 });
 
 gulp.task('compress', ['compress-svg'], (cb) => {
-  gulp.src('build/dist/**/*.{js,css,png,webp,jpg,html}')
-    .pipe($.gzip())
-    .pipe(gulp.dest('build/dist'))
-    .on('end', () => cb())
+    gulp.src('build/dist/**/*.{js,css,png,webp,jpg,html}')
+        .pipe($.gzip())
+        .pipe(gulp.dest('build/dist'))
+        .on('end', () => cb())
 });
 
 gulp.task('serveAndWatch', ['initModeDev', 'build'], () => {
@@ -250,12 +322,12 @@ gulp.task('serveAndWatch', ['initModeDev', 'build'], () => {
     port: 3000
   });
 
-  gulp.watch('src/**/*.html', ['html', browserSync.reload]);
-  gulp.watch('src/**/*.{scss,css}', ['styles', browserSync.reload]);
-  gulp.watch('src/**/*.adoc', ['blog', browserSync.reload]);
-  gulp.watch('src/**/*.js', ['lint', 'local-js', browserSync.reload]);
-  gulp.watch('src/images/**/*', ['images', browserSync.reload]);
-  gulp.watch('src/**/*.hbs', ['html', browserSync.reload]);
+  gulp.watch('src/**/*.html', () => $.sequence('html', 'cache-busting-dev', browserSync.reload));
+  gulp.watch('src/**/*.{scss,css}', () => $.sequence('styles', 'blog', 'html', 'cache-busting-dev', browserSync.reload));
+  gulp.watch('src/**/*.adoc', () => $.sequence('blog', 'cache-busting-dev', browserSync.reload));
+  gulp.watch('src/**/*.js', () => $.sequence('lint', 'local-js', 'blog', 'html', 'cache-busting-dev', browserSync.reload));
+  gulp.watch('src/images/**/*', () => $.sequence('images', browserSync.reload));
+  gulp.watch('src/**/*.mustache', () => $.sequence('blog', 'html', 'cache-busting-dev', browserSync.reload));
 });
 
 
@@ -264,44 +336,48 @@ gulp.task('clean', () => del('build', {dot: true}));
 gulp.task('initModeDev', () => modeDev = true);
 
 gulp.task('build', cb => {
-  // Hack to be able to stop the task when the async firebase requests are complete
-  gulp.on('stop', () => {
-    if(!modeDev) {
-      process.nextTick(() => process.exit(0));
-    }
-  });
+    // Hack to be able to stop the task when the async firebase requests are complete
+    gulp.on('stop', () => {
+        if (!modeDev) {
+            process.nextTick(() => process.exit(0));
+        }
+    });
 
-runSequence(
-    'styles',
-    'blog',
-    'images-min',
-    'images',
-    'lint',
-    ['html', 'local-js', 'vendor-js'],
-    'copy',
-    'service-worker',
-    cb
-  )
+    $.sequence(
+        'images-pre',
+        'styles',
+        'blog',
+        'images',
+        'images-post',
+        'lint',
+        ['html', 'local-js', 'vendor-js'],
+        'copy',
+        'cache-busting',
+        cb
+    )
 });
 
 
 // Build production files, the default task
+// Before a delivery we need to launch blog-firebase to update the pages on database
 gulp.task('default', cb =>
-  runSequence(
-    'clean',
-    'build',
-    'cache-busting',
-    'compress',
-    cb
-  )
+    $.sequence(
+        'clean',
+        'build',
+        'sitemap',
+        'compress',
+        'service-worker',
+        cb
+    )
 );
 
 // Build dev files
 gulp.task('serve', cb =>
-  runSequence(
-    'initModeDev',
-    'build',
-    'serveAndWatch',
-    cb
-  )
+    $.sequence(
+        'initModeDev',
+        'build',
+        'serveAndWatch',
+        cb
+    )
 );
+

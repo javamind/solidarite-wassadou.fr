@@ -1,0 +1,14 @@
+{
+  "blog.html": {
+    "keywords": "Solidarité Wassadou Pont-Trambouze Sénégal Blog",
+    "title": "Le blog Solidarité Wassadou Pont-Trambouze",
+    "description": "Le blog Solidarité Wassadou Pont-Trambouze regroupe des articles sur les activités de l'association",
+    "blog": true
+  },
+  "blog_archive.html": {
+    "keywords": "Solidarité Wassadou Pont-Trambouze Sénégal archive",
+    "title": "Les archives du blog Solidarité Wassadou Pont-Trambouze",
+    "description": "Retrouvez l'intégralité des articles du blog",
+    "blog": "findArchiveBlogpost"
+  }
+}

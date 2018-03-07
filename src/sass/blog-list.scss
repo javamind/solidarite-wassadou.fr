@@ -16,6 +16,9 @@
     flex-basis: auto;
   }
 }
+.swp-blog--container-left{
+  flex: 2 1 0;
+}
 .swp-blog--container-right{
   flex: 1 0 0;
   padding-left: 1em;
@@ -23,6 +26,15 @@
 
   @media (max-width: $max_width_tablet) {
     display: none;
+  }
+
+  .swp_formation__detail{
+    background-color: #2196f3;
+    border-color: #2196f3;
+    color: white;
+    a {
+      color: white;
+    }
   }
 }
 .swp-blog--button{
@@ -80,6 +92,16 @@
       font-size: $text_head_mobile;
       line-height: ($text_head_mobile+2);
     }
+  }
+}
+.swp-blog--article-archive {
+  @extend .swp-blog--article;
+  flex: 0 1 33%;
+  @media (max-width: $max_width_mobile) {
+    flex: 0 1 auto;
+  }
+  @media (min-width: $min_width_tablet) and (max-width: $max_width_tablet){
+    flex: 0 1 49%;
   }
 }
 .swp-blog--article-head{

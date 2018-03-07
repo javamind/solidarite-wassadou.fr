@@ -5,7 +5,7 @@
   "description": "Solidarité Wassadou Pont-Trambouze",
   "start_url": "/index.html"
   "icons": {
-    "128": "/images/touch/icon.png"
+    "128": "/images/touch/logo-icon.png"
   },
   "developer": {
     "name": "Guillaume EHRET",
