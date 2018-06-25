@@ -65,7 +65,6 @@ window.app = (function() {
   function loadLazyImages() {
     const images = document.getElementsByClassName('swp-img--lazyload');
     Array.from(images).forEach(function(image){
-        console.log(image.getAttribute('data-src'))
         image.src= image.getAttribute('data-src')
     });
   }

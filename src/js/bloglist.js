@@ -10,7 +10,6 @@ window.blog = (function () {
   }
 
   function findMoreBlogpost() {
-    console.log('dsd', nbElementDisplayed)
     nbElementDisplayed += 2;
     let extensionPoint = document.getElementById('swp_extension');
 
