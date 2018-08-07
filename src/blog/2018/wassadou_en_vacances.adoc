@@ -1,0 +1,20 @@
+:doctitle: Etudiants en vacances
+:description:  Nos universitaires qui eux aussi sont en vacances au mois d'août. Afin de fêter ces vacances, Michel Perret notre partenaire à Ngaparou, a invité chez lui tous les étudiants pour une journée détente.
+:keywords: Wassadou Eau
+:author: Jean Pierre Lachat
+:revdate: 2018-08-07
+:teaser: Quelques nouvelles de nos universitaires qui eux aussi sont en vacances au mois d'août
+:imgteaser: ../../img/blog/2018/vacances_02.jpg
+
+Quelques nouvelles de nos universitaires qui eux aussi sont en vacances au mois d'août. Afin de fêter ces vacances, Michel Perret notre partenaire à Ngaparou, a invité chez lui tous les étudiants pour une journée détente.
+
+image::../../img/blog/2018/vacances_01.jpg[Etudiants de Wassadou avec Michel Perret]
+
+Piscine, détente étaient au rendez-vous mais aussi discutions sur les projets de ces universitaires, projets qui touchent aussi bien l’éducation de leurs jeunes frères que la vie au village.
+
+Ils vous en tiendront informés prochainement.
+
+image::../../img/blog/2018/vacances_02.jpg[Etudiants autour de la table]
+
+image::../../img/blog/2018/vacances_03.jpg[Etudiants dans la piscine]
+
