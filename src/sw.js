@@ -1,4 +1,4 @@
-importScripts('workbox-sw.prod.js');
+importScripts('workbox-sw.js');
 
 if (workbox) {
   workbox.core.setCacheNameDetails({
