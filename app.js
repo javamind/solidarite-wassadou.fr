@@ -20,7 +20,7 @@ const app = express()
   .use(compression())
   .use(express.urlencoded({extended: false}))
   .use(helmet())
-  .use(helmet.contentSecurityPolicy(security.securityPolicy()))
+  //.use(helmet.contentSecurityPolicy(security.securityPolicy()))
   .use(security.corsPolicy())
   .use(express.static(SOLIDARITE_WASSADOU.static, {setHeaders: cachePolicy.setCustomCacheControl}))
   .all('*', security.notFoundHandler());
