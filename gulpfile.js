@@ -217,7 +217,8 @@ gulp.task('images-post', () =>
 gulp.task('copy', (cb) => {
     gulp.src([
         'src/*.{ico,html,txt,json,webapp,xml}',
-        'src/.htaccess'
+        'src/.htaccess',
+        'node_modules/workbox-sw/build/*-sw.js'
     ], {
         dot: true
     })
