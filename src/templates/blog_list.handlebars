@@ -19,7 +19,7 @@
             <div class="swp-blog--container">
                 <div class="swp-blog--container-article" id="last-article">
                     {{#firstArticle}}
-                        <article class="swp-blog--article-head" onclick="document.location.href='blog/{{dir}}/{{filename}}.html'">
+                        <article class="swp-blog--article" onclick="document.location.href='blog/{{dir}}/{{filename}}.html'">
                             <h1><a href="blog/{{dir}}/{{filename}}.html">{{doctitle}}</a></h1>
                             <div class="swp-blog--imgteaser"><img class="swp-img--lazyload" data-src="{{{imgteaser}}}"/></div>
                             <p class="swp-blog--teaser">{{teaser}}</p>
@@ -36,46 +36,6 @@
                     <div class="swp-blog--container-article" id="swp_extension">
                     </div>
                     <p>&nbsp;</p>
-                </div>
-
-
-                <div class="swp-blog--container-right">
-                    <div id="last-articles">
-                        <table class="swp-blog--tenlastarticles">
-                            <thead>
-                            <tr>
-                                <th>Derniers articles</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {{#last15Articles}}
-                                <tr>
-                                    <td class="swp-blog--shortcutlist">
-                                        <small>{{date}}</small>
-                                        <a title="{{doctitle}}" href="blog/{{dir}}/{{filename}}.html">{{doctitle}}</a>
-                                    </td>
-                                </tr>
-                            {{/last15Articles}}
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td class="swp-blog--article-all"><a href="blog_archive.html">Voir tous les articles</a></td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                    <div>
-                        <h3>Contact</h3>
-                        <p>
-                            <a href="https://www.facebook.com/SolidariteWassadouPontTrambouze/" target="_blank" rel="noopener">
-                                <img src="img/contact/facebook.svg" alt="Facebook" class="swp-social">
-                            </a>
-                            <a href="mailto:contact@solidarite-wassadou.fr" target="_blank" rel="noopener">
-                                <img src="img/contact/mail.svg" alt="Mail" class="swp-social">
-                            </a>
-                        </p>
-
-                    </div>
                 </div>
             </div>
             <div class="center is-small-screen">
