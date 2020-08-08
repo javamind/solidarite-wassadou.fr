@@ -1,0 +1,19 @@
+:doctitle: Accident de camion mortel
+:description:  Accident de camion mortel
+:keywords: Wassadou accident camion
+:author: Jean Pierre Lachat
+:revdate: 2020-08-08
+:teaser: Un camion citerne a explosé dans les parages de Wassadou
+:imgteaser: ../../img/blog/2020/accident0.jpg
+
+Un accident de camion citerne à Wassadou vendredi dernier a provoqué une forte pollution de la rivière Niékolo après le déversement de 55 000 litres de Gasoil.
+
+image::../../img/blog/2020/accident0.jpg[Accident de camion]
+
+L’accident a fait deux morts sur les 3 personnes du camion, le conducteur ayant eu le temps de sauter du véhicule avant l’explosion.
+
+image::../../img/blog/2020/accident1.jpg[Accident de camion]
+
+Cette rivière ’le Niékolo’ se jette dans le Fleuve Gambie à 1 km du lieu de l’accident.  Malheureusement ce fleuve est en crue à cette période de l’année. Il remonte même dans le lit de la rivière empêchant une évacuation de cette nappe de gasoil.
+
+La pêche est donc impossible pour une durée indéterminée. Le village est donc privé de sa principale source de poisson à cette époque de l’année ce qui rend compliquée la situation au village.
