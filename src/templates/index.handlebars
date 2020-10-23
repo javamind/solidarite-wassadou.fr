@@ -13,15 +13,18 @@
             <swp-home>
                 <h1>Solidarité Wassadou Pont-Trambouze</h1>
                 <p class="swp_lead">
-                    Nous sommes une association loi 1901 crée en 2004. Tous les membres de
-                    l'association sont bénévoles et œuvrent ensemble au développement du village de Wassadou , province
-                    de Tambacounda au Sénégal. </p>
+                    Créé en association loi 1901 depuis 2004, tous les membres de l'association sont
+                    bénévoles et oeuvrent ensemble au développement du village de Wassadou,
+                    département de Tambacounda au Sénégal. </p>
 
-                <p class="swp_lead is-large-screen">
-                    Nos actions sont axées essentiellement sur la <b>gratuité de
-                    l’enseignement</b> ouvrant ainsi
-                    l’accès à l’école pour tous les enfants de ce village de brousse. Pour un adolescent le choix de son
-                    avenir passe forcement par la maitrise de la lecture, de l’écriture et des mathématiques.
+                <p class="swp_lead">
+                    Nos actions sont axées sur la <b>gratuité et l'accès à tous les enfants du village à un
+                    enseignement scolaire</b>.
+                </p>
+
+                <p class="center swp_lead">
+                    "Pour un adolescent le choix de son avenir passe forcément par la maitrise
+                    de la lecture, de l’écriture et des mathématiques".
                 </p>
 
                 <div class="center">
@@ -30,60 +33,60 @@
                     </div>
                 </div>
 
-                <p class="swp_lead is-small-screen">
-                    Nos actions sont axées essentiellement sur la <b>gratuité de
-                    l’enseignement</b> ouvrant ainsi
-                    l’accès à l’école pour tous les enfants de ce village de brousse. Pour un adolescent le choix de son
-                    avenir passe forcement par la maitrise de la lecture, de l’écriture et des mathématiques.
-                </p>
-
                 <p class="swp_lead is-large-screen">
                     Nos actions sont menées dans le but
                 </p>
 
                 <ul class="is-large-screen">
-                    <li> de permettre à tous les enfants de l'école de manger un repas gratuit par jour</li>
-                    <li> d'apporter les fournitures et le matériel scolaire pour que chaque enfant puisse suivre une
-                        scolarité complète de la maternelle à l'entrée en secondaire
+                    <li>D'apporter les fournitures et le matériel scolaire pour que chaque enfant puisse
+                        suivre une scolarité complète de la maternelle à l'entrée en secondaire.
                     </li>
-                    <li> d'apporter une bourse pour les enfants accédant au collège</li>
-                    <li> de les aider à développer des activités pour à terme financer eux-mêmes le fonctionnement de
-                        l'école : création d'un jardin potager de 1 hectare pour alimenter en partie la
-                        cantine
+                    <li>D'apporter une bourse pour les enfants accédant au secondaire, collège comme
+                        au lycée.
                     </li>
-                </ul>
-
-                <p class="swp_lead is-small-screen">
-                    Nos actions
-                </p>
-
-                <ul class="is-small-screen">
-                    <li> fournir un repas gratuit par jour à tous les enfants de l'école</li>
-                    <li> apporter les fournitures et le matériel scolaire de la maternelle à l'entrée en secondaire
+                    <li>De trouver et de financer des formations professionnelles pour ceux ou celles
+                        qui souhaitent entrer dans la vie active rapidement.
                     </li>
-                    <li> bourse pour les enfants accédant au collège</li>
-                    <li> aide au développement pour privilégier l'auto financement : création par exemple d'un jardin
-                        potager de 1 hectare
+                    <li>D’apporter une aide financière pour le logement des universitaires issu de
+                        Wassadou qui suivent des études supérieures à l’université ou dans une école
+                        supérieure à Dakar.
+                    </li>
+                    <li>De participer à la sécurisation et à l’amélioration des salles de classes à l’école
+                        du village.
+                    </li>
+                    <li>De s'investir avec l’association des jeunes de Wassadou pour un bon développement de leur
+                        village.
+                    </li>
+                    <li>D'encourager les jeunes du village à travers leur association à la protection et au
+                        respect des jeunes filles.
                     </li>
                 </ul>
 
                 <div class="swp_grid__flexible">
                     {{#firstArticle}}
-                        <article class="swp-blog--article swp_grid__element"  onclick="document.location.href='blog/{{dir}}/{{filename}}.html'">
-                            <p class="swp_lead swp-blog--head"><a href="blog/{{dir}}/{{filename}}.html">{{doctitle}}</a></p>
-                            <div class="swp-blog--imgteaser"><img class="swp-img--lazyload" data-src="{{{imgteaser}}}"/></div>
+                        <article class="swp-blog--article swp_grid__element"
+                                 onclick="document.location.href='blog/{{dir}}/{{filename}}.html'">
+                            <p class="swp_lead swp-blog--head"><a href="blog/{{dir}}/{{filename}}.html">{{doctitle}}</a>
+                            </p>
+                            <div class="swp-blog--imgteaser"><img class="swp-img--lazyload" data-src="{{{imgteaser}}}"/>
+                            </div>
                             <p class="swp-blog--teaser">{{teaser}}</p>
                         </article>
                     {{/firstArticle}}
                     {{#secondArticles}}
-                        <article class="swp_grid__element swp-blog--article" onclick="document.location.href='blog/{{dir}}/{{filename}}.html'">
-                            <p class="swp_lead swp-blog--head"><a href="blog/{{dir}}/{{filename}}.html">{{doctitle}}</a></p>
-                            <div class="swp-blog--imgteaser"><img class="swp-img--lazyload" data-src="{{{imgteaser}}}"/></div>
+                        <article class="swp_grid__element swp-blog--article"
+                                 onclick="document.location.href='blog/{{dir}}/{{filename}}.html'">
+                            <p class="swp_lead swp-blog--head"><a href="blog/{{dir}}/{{filename}}.html">{{doctitle}}</a>
+                            </p>
+                            <div class="swp-blog--imgteaser"><img class="swp-img--lazyload" data-src="{{{imgteaser}}}"/>
+                            </div>
                             <p class="swp-blog--teaser">{{teaser}}</p>
                         </article>
                     {{/secondArticles}}
                 </div>
-                <p class="center swp-blog--button"><button class="center" onclick="document.location.href='blog.html'">Voir le blog</button></p>
+                <p class="center swp-blog--button">
+                    <button class="center" onclick="document.location.href='blog.html'">Voir le blog</button>
+                </p>
             </swp-home>
         </article>
 
@@ -94,8 +97,9 @@
                 <h1>Le village de Wassadou</h1>
 
                 <p class="swp_lead">
-                    Wassadou se trouve au Sud-est du pays à 520 km de la capitale Dakar. A L’extrémité de la Gambie et aux
-                    portes du parc national de Niokoto  koba.
+                    Wassadou se trouve au Sud-est du pays à 520 km de la capitale Dakar. A L’extrémité de la Gambie et
+                    aux
+                    portes du parc national de Niokoto koba.
                 </p>
 
                 <div class="center">
@@ -118,9 +122,11 @@
                     village de Wassadou appelé aussi parfois Wassadougou.
                 </p>
                 <p class="swp_lead">
-                    La principale ressource de Wassadou est la culture de la banane sur des exploitations privées. Le peu
+                    La principale ressource de Wassadou est la culture de la banane sur des exploitations privées. Le
+                    peu
                     d’élevage existant se limite aux besoins de la famille (chèvre, poule ou mouton). Le village compte
-                    approximativement 150 chefs de case (chefs de famille) et on estime la population de la commune entre
+                    approximativement 150 chefs de case (chefs de famille) et on estime la population de la commune
+                    entre
                     1300 à 1500 personnes.</p>
 
                 <div class="center">
@@ -161,18 +167,32 @@
                     </div>
                 </div>
                 <p class="swp_lead">
-                    Si vous voulez soutenir notre action vous pouvez envoyé vos dons directement. Sachez que <b>5€ permettent
-                    de financer un an de cantine scolaire pour un enfant de l'école primaire</b>.
+                    Si vous voulez soutenir nos actions, vous pouvez envoyer vos dons directement en
+                    sachant qu’avec:
                 </p>
+                <ul>
+                    <li>5€ nous finançons les fournitures scolaires pour l’année aux 300 élèves de
+                        primaire, en moyenne chaque année.</li>
+                    <li>15€, nous offrons une bourse à un élève en secondaire pour payer son
+                        inscription, ses fournitures. Une centaine de garçons et de filles en bénéficient
+                        chaque année.</li>
+                    <li>50€ et 100€, nous finançons une formation professionnelle pour un jeune dans
+                        un centre agréé.</li>
+                    <li>Et que le coût de notre participation pour le loyer des universitaires à Dakar
+                        s’élève à près de 2 000€/an.</li>
+                </ul>
                 <p class="swp_lead" align="center">
-                    <a class="swp_button_donation center" target="_blank" href="https://www.donnerenligne.fr/solidarite-wassadou-pont-trambouze/faire-un-don">Faire un don</a>
+                    <a class="swp_button_donation center" target="_blank"
+                       href="https://www.donnerenligne.fr/solidarite-wassadou-pont-trambouze/faire-un-don">Faire un
+                        don</a>
                 </p>
                 <p class="swp_lead">
                     Envoyez un chèque à l'ordre de SOLIDARITE WASSADOU PONT-TRAMBOUZE à l'adresse suivante : Mairie de
                     Pont Trambouze - Place Beillard - Pont-Trambouze - 69470 COURS.
                 </p>
                 <p class="swp_lead">
-                    Vous pouvez aussi faire un virement. Pour celà envoyez nous un mail à contact@solidarite-wassadou.fr.
+                    Vous pouvez aussi faire un virement. Pour celà envoyez nous un mail à
+                    contact@solidarite-wassadou.fr.
                     Nous vous enverrons en retour notre RIB pour que vous ayez les éléments pour faire un virement.
                 </p>
             </swp-donation>
@@ -204,7 +224,8 @@
                         </address>
                         <p>&nbsp;</p>
                         <p>
-                            <a href="https://www.facebook.com/SolidariteWassadouPontTrambouze/" target="_blank" rel="noopener">
+                            <a href="https://www.facebook.com/SolidariteWassadouPontTrambouze/" target="_blank"
+                               rel="noopener">
                                 <img src="img/contact/facebook.svg" alt="Facebook" class="swp-social">
                             </a>
                             <a href="mailto:contact@solidarite-wassadou.fr" target="_blank" rel="noopener">
