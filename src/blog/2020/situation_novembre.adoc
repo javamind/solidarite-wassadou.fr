@@ -1,0 +1,13 @@
+:doctitle: Covid19 état en novembre
+:description: Rentrée des classes 2020
+:keywords: Wassadou école
+:author: Jean Pierre Lachat
+:revdate: 2020-08-15
+:teaser: Point sur la situation sanitaire
+:imgteaser: ../../img/blog/2020/rentreecovid.jpg
+
+Avec le retour de vacances de certaines personnes pour la rentrée, l’état sanitaire de Wassadou c’est fortement dégradé ces derniers jours. Après le décès de 4 personnes en octobre dont 2 élevés, de très nombreuses personnes sont malades, Covid, Paludisme ou autre ? personne n’a de réponse.
+
+La case de santé du village est bombée, Jean Pierre va prendre rapidement des nouvelles auprès de la responsable. Ne pouvant pas faire grand-chose d’ici, nous souhaitons que la situation s’améliore au plus vite.  (Source, Fyli Keita chef du village du 12 novembre 2020)
+
+image::../../img/blog/2020/rentreecovid.jpg[Etat classe collège]
