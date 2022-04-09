@@ -55,7 +55,7 @@
     "html-minifier": "^3.5.20",
     "imagemin-jpegtran": "^5.0.2",
     "md5": "^2.2.1",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "serve-static": "^1.13.2",
     "workbox-build": "3.6.2"
   },
