@@ -9,7 +9,7 @@
 }
 .swp-blog--container-article{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   flex: 2 1 0;
   @media (max-width: $max_width_mobile) {
@@ -42,6 +42,7 @@
 .swp-blog--article-archive {
   @extend .swp-blog--article;
   flex: 0 1 33%;
+  margin: 0.1em;
   @media (max-width: $max_width_mobile) {
     flex: 0 1 auto;
   }
