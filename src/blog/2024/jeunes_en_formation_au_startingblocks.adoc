@@ -4,7 +4,7 @@
 :author: Jean Pierre Lachat
 :revdate: 2024-02-20
 :teaser: Examen en approche pour les futurs maraîchers de Wassadou.
-:imgteaser: ../../img/blog/2023/revolte_0.jpg
+:imgteaser: ../../img/blog/2024/maraichers.jpg
 
 Les 4 jeunes de Wassadou, Alpha Oumar Diallo, Cheikh Ndiaye, Sorry Nadiya et Maurice Bianquinch, qui suivent la formation de maraîchage depuis 3 ans au centre de formations professionnelles de Tambacounda sont en vue de leur examen.
 
@@ -15,4 +15,4 @@ Après 3 années de sérieux travail, nous leurs souhaitons à tous une bonne r�
 Notre association a financé entièrement leurs formations durant ces 3 années grâce à votre soutien et à tous les bénévoles œuvrant autour de nous.
 
 .De gauche à droite ; Sorry, Cheihk, Jean-Pierre, Apha Omar et Maurice
-image::../../img/blog/2023/maraichers.jpg[De gauche à droite ; Sorry, Cheihk, Jean-Pierre, Apha Omar et Maurice]
+image::../../img/blog/2024/maraichers.jpg[De gauche à droite ; Sorry, Cheihk, Jean-Pierre, Apha Omar et Maurice]

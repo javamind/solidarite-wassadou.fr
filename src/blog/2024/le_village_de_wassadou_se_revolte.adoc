@@ -4,11 +4,11 @@
 :author: Jean Pierre Lachat
 :revdate: 2024-02-16
 :teaser: Le village de Wassadou a fait la "Une" du Journal télévisé sur la 1ère chaine de télévision sénégalaise de 20 h le 15 février 2024.
-:imgteaser: ../../img/blog/2023/revolte_0.jpg
+:imgteaser: ../../img/blog/2024/revolte_0.jpg
 
 Le village de Wassadou a fait la "Une" du Journal télévisé sur la 1ère chaine de télévision sénégalaise de 20 h le 15 février 2024.
 
-image::../../img/blog/2023/revolte_0.jpg[Ousmane Diallo]
+image::../../img/blog/2024/revolte_0.jpg[Ousmane Diallo]
 
 En effet, les promesses faites par les dirigeants de la communauté de communes de Dialacoto (d’où le village, dépends.) et de l’état restent vaines depuis des années et les villageois sont fatigué d’attendre et se font entendre.
 
@@ -37,7 +37,7 @@ La sécurisation de l’école primaire reste une revendication majeure pour le 
 
 Et enfin la sécurisation de la Route Nationale 1, traversante le village et fréquentée chaque jour par des dizaines de camions citernes remplis d’hydrocarbure se rendant au Mali le pays voisin.                                              De nombreux accidents mortels sont malheureusement enregistrés à Wassadou notamment au niveau d’un pont très dangereux. Ce pont à double virage sur la rivière Niékolo est au bout d’une ligne droite de plusieurs kilomètres à l’entrée du village. La vitesse excessive des véhicules à l’entrée du pont est très accidentogène.                                                                                                                En 2020 uns des camions rempli de 55 000 litres de pétrole a fini sa course dans la rivière faisant deux morts et entrainant une pollution de la rivière sur plus d’un an, privant ainsi les pêcheurs du village de leur activité faisant vivre de nombreuses famille. Des camions de ciment, de riz …Ont également terminé leurs courses dans la rivière. La pause de ralentisseurs dans le village et aux entrées du pont est demandée depuis très longtemps, mais sans résultat.
 
-image::../../img/blog/2023/revolte_1.jpg[Route Nationale 1 traversant Wassadou]
+image::../../img/blog/2024/revolte_1.jpg[Route Nationale 1 traversant Wassadou]
 
 Ainsi devant le silence des autorités, la population, principalement les jeunes, s’est tournée vers la presse télévisée qui malgré l’éloignement du village de la capitale Dakar (560 km) a jugé nécessaire de rencontrer la population et de leur consentir une page entière du JT de 20 h du 15 févier.
 
