@@ -2,7 +2,7 @@
 :description: Le village de Wassadou a fait la "Une" du Journal télévisé sur la 1ère chaine de télévision sénégalaise de 20 h le 15 février 2024.
 :keywords: Wassadou école
 :author: Jean Pierre Lachat
-:revdate: 2023-02-16
+:revdate: 2024-02-16
 :teaser: Le village de Wassadou a fait la "Une" du Journal télévisé sur la 1ère chaine de télévision sénégalaise de 20 h le 15 février 2024.
 :imgteaser: ../../img/blog/2023/revolte_0.jpg
 

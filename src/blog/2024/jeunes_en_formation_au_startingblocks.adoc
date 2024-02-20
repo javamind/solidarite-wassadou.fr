@@ -2,7 +2,7 @@
 :description: Examen en approche pour les futurs maraîchers de Wassadou.
 :keywords: Wassadou formation
 :author: Jean Pierre Lachat
-:revdate: 2023-02-20
+:revdate: 2024-02-20
 :teaser: Examen en approche pour les futurs maraîchers de Wassadou.
 :imgteaser: ../../img/blog/2023/revolte_0.jpg
 
