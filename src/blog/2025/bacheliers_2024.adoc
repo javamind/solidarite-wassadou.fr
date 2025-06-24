@@ -1,0 +1,99 @@
+:doctitle: Les bacheliers 2024 à l'université
+:description: Jean-Pierre sur place présentent les bacheliers 2024 à l'université.
+:keywords: Wassadou université
+:author: Jean Pierre Lachat
+:revdate: 2025-06-23
+:teaser: Jean-Pierre sur place présentent les bacheliers 2024 à l'université.
+:imgteaser: ../../img/blog/2025/univ0.jpg
+
+
+Depuis quelques mois les bacheliers de Wassadou édition 2024 ont été affecté dans diverses universités du pays, Jean-Pierre sur place actuellement vous les présentent.
+
+=== Amadou Kanté
+
+Né à Wassadou, je suis étudiant en 1ère année en gestion à l'école supérieure polytechnique de l'UCAD Université Cheikh Anta Diop de Dakar.
+
+J'ai obtenu le BAC en 2024.
+
+Mon problème majeur ici c'est la restauration, je n'arrive pas à m'adapter à la nourriture des restaurants U.
+J’ai 20ans. Je loge au campus universitaire.
+
+image::../../img/blog/2025/amadou.jpg[Amadou Kanté]
+
+=== Nadya Aminata
+
+Filière: Faculté d’économie et gestion.
+Année d’obtention de mon bac :2024
+Situation universitaire: Plutôt abordable les conditions nécessaires sont remplies.
+
+Je ne loge pas dans l’université donc à part le déplacement(transport) dans l’ensemble mais ça va, à Dakar.
+J’ai 19 ans
+
+image::../../img/blog/2025/nadya.jpg[Nadya Aminata]
+
+=== Cheikh Alassane Ndiaye
+
+Filière : MOI (Management Informatisé des Organisations). Université de Ziguinchor (Casamance)
+
+Année d’obtention du BAC: 2024
+
+Actuellement ça va, tout se passe bien aussi bien au niveau du logement que des cours.
+
+J’ai 22 ans
+
+image::../../img/blog/2025/cheikh.jpg[Cheikh Alassane Ndiaye]
+
+=== Coumba DIOUF
+
+Née à Wassadou, orientée à Dakar en Histoire.
+
+Obtention du baccalauréat 2024.
+Ma situation universitaire est abordable à part les déplacements qui sont un peu difficiles.
+Je loge à dans le quartier de Ouakam à 7 km de l’université.
+
+J’ai 21 ans
+
+image::../../img/blog/2025/coumba.jpg[Coumba DIOUF]
+
+=== Aliou DIOUF
+
+Faculté des sciences juridiques et politiques
+
+Année d'obtention bac: 2024
+
+Situation : universitaire, plutôt abordable les conditions nécessaires sont remplies.
+
+Je ne loge pas dans l'université mais au studio des étudiants de Wassadou.
+Dans l'ensemble ça va, à part le déplacement (transport) et le paiement du loyer.
+
+J’ai 22ans.
+
+image::../../img/blog/2025/aliou.jpg[Aliou DIOUF]
+
+=== Mamadou Saliou Diallo
+
+Natif de Wassadou, orienté à l'université Cheikh Anta Diop de Dakar.
+
+1ère année en Doctorat de langue Portugaise.
+
+Je vis bien mon arrivée à Dakar dans l'ensemble mais j'ai un problème de paiement pour le loyer.
+
+J’ai 21 ans
+
+image::../../img/blog/2025/mamadou.jpg[Mamadou Saliou Diallo]
+
+=== Yacine TRAORÉ
+
+Née à Wassadou.
+
+Je suis orientée l’université de Kaffrine, en Communication pour le développement.
+
+Je loge dans une résidence pour 3 000f/mois (4.60€)
+Pour le transport l’abonnement est à 2 000f/mois (3 €).
+Sommes importantes pour moi.
+
+J'ai obtenu mon baccalauréat en 2024.
+
+J’ai 21 ans
+
+image::../../img/blog/2025/yacine.jpg[Yacine TRAORÉ]
