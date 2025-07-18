@@ -2,7 +2,7 @@
 :description: Enfin de l’électricité à Wassadou et peut être bientôt de l’eau potable au robinet.
 :keywords: Wassadou université
 :author: Jean Pierre Lachat
-:revdate: 2025-06-23
+:revdate: 2025-07-12
 :teaser: Enfin de l’électricité à Wassadou et peut être bientôt de l’eau potable au robinet.
 :imgteaser: ../../img/blog/2025/eau_2.jpg
 
