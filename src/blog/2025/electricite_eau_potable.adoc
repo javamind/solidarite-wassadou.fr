@@ -9,7 +9,7 @@
 
 Le 31 mai 2013, un forage et un château d’eau destinés à approvisionner en eau potable quatorze villages de la région de Wassadou ont été inaugurés au cœur du village de Wassadou. A cette occasion, notre association a été invitée représentée par Jean Pierre.
 
-image::../../img/blog/2025/eau_4.jpg
+image::../../img/blog/2025/eau_4.jpg[]
 
 Malgré des investissements conséquents financés par divers organismes, ce forage n’a jamais été opérationnel.
 
@@ -17,14 +17,14 @@ Par conséquent, les habitants du village continuent de dépendre exclusivement 
 
 Douze ans plus tard, en ce mois de juillet 2025, un projet de restauration du forage est lancé sous la direction de l’association des jeunes de Wassadou, qui a identifié des partenaires financiers étrangers africains.
 
-image::../../img/blog/2025/eau_2.jpg
+image::../../img/blog/2025/eau_2.jpg[]
 
 Le projet vise à fournir de l’eau potable au robinet aux familles du village et des environs.
 
-image::../../img/blog/2025/eau_1.jpg
+image::../../img/blog/2025/eau_1.jpg[]
 
 Coté électricité, le réseau électrique desservant sept villages de la commune de Dialacoto, dans la région de Tambacounda, est entré en service en janvier 2025.
 
 Wassadou a été raccordé en mai 2025, ouvrant ainsi la voie à une large adoption de l’électricité et au développement du village.
 
-image::../../img/blog/2025/eau_3.jpg
+image::../../img/blog/2025/eau_3.jpg[]
