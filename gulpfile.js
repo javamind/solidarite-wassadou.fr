@@ -3,8 +3,6 @@
 const gulp = require('gulp');
 const del = require('del');
 const path = require('path');
-const imagemin = require('gulp-imagemin');
-const imageminJpegtran = require('imagemin-jpegtran');
 const wbBuild = require('workbox-build');
 const website = require('devmind-website')();
 const $ = require('gulp-load-plugins')();
@@ -182,11 +180,11 @@ gulp.task('vendor-js', () =>
  */
 gulp.task('images-pre', () =>
     gulp.src('src/images/**/*.{svg,png,jpg}')
-        .pipe($.if(!modeDev, imagemin([imagemin.gifsicle(), imageminJpegtran(), imagemin.optipng(), imagemin.svgo()], {
-            progressive: true,
-            interlaced: true,
-            arithmetic: true,
-        })))
+        // .pipe($.if(!modeDev, imagemin([imagemin.gifsicle(), imageminJpegtran(), imagemin.optipng(), imagemin.svgo()], {
+        //     progressive: true,
+        //     interlaced: true,
+        //     arithmetic: true,
+        // })))
         .pipe(gulp.dest('build/.tmp/img'))
         .pipe($.if('**/*.{jpg,png}', $.webp()))
         .pipe($.size({title: 'images', showFiles: false}))
