@@ -1,5 +1,6 @@
 'use strict';
 
+const sass = require('gulp-sass')(require('sass'));
 const gulp = require('gulp');
 const del = require('del');
 const path = require('path');
@@ -50,9 +51,7 @@ gulp.task('styles', (cb) => {
   gulp.src(['src/sass/main.scss', 'src/sass/blog-list.scss', 'src/sass/blog.scss'])
     .pipe($.newer('build/.tmp/css'))
     .pipe($.sourcemaps.init())
-    .pipe($.sass({
-      precision: 10
-    }).on('error', $.sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulp.dest('build/.tmp/css'))
     // Concatenate and minify styles
