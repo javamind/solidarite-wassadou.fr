@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Dev-Mind</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .welcome-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #718096;
+            margin-bottom: 40px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .feature {
+            padding: 20px;
+            border-radius: 10px;
+            background: #f7fafc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .feature p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .storage-info {
+            margin-top: 50px;
+            padding: 30px;
+            background: #f7fafc;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .storage-info h2 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .storage-item {
+            background: white;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .storage-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .storage-item strong {
+            color: #2d3748;
+            font-size: 1rem;
+        }
+
+        .storage-value {
+            color: #e53e3e;
+            font-family: 'Courier New', monospace;
+            padding: 5px 10px;
+            background: #fff5f5;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+
+        .storage-value.found {
+            color: #38a169;
+            background: #f0fff4;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .welcome-container {
+                padding: 40px 25px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .storage-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .storage-value {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="logo">DM</div>
+        <h1>Welcome to Dev-Mind</h1>
+        <p class="subtitle">Your journey to mastering modern web development starts here</p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📝</div>
+                <h3>Technical Blog</h3>
+                <p>In-depth articles on Angular, Kotlin, Spring Boot, and modern web technologies</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎓</div>
+                <h3>Training Resources</h3>
+                <p>Comprehensive courses on Android, Cloud, Gradle, and web development</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💡</div>
+                <h3>Best Practices</h3>
+                <p>Learn industry standards and proven patterns for building scalable applications</p>
+            </div>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="/blog" class="btn btn-primary">Explore Blog</a>
+            <a href="/training" class="btn btn-secondary">View Training</a>
+        </div>
+
+        <div class="storage-info">
+            <h2>LocalStorage Information</h2>
+            <div class="storage-item">
+                <strong>Token:</strong>
+                <span id="token-value" class="storage-value">Not found</span>
+            </div>
+            <div class="storage-item">
+                <strong>App Usage:</strong>
+                <span id="app-usage-value" class="storage-value">Not found</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to display localStorage items
+        function displayLocalStorageItems() {
+            const token = localStorage.getItem('token');
+            const appUsage = localStorage.getItem('app-usage');
+
+            const tokenElement = document.getElementById('token-value');
+            const appUsageElement = document.getElementById('app-usage-value');
+
+            if (token) {
+                tokenElement.textContent = token;
+                tokenElement.classList.add('found');
+            } else {
+                tokenElement.textContent = 'Not found';
+                tokenElement.classList.remove('found');
+            }
+
+            if (appUsage) {
+                appUsageElement.textContent = appUsage;
+                appUsageElement.classList.add('found');
+            } else {
+                appUsageElement.textContent = 'Not found';
+                appUsageElement.classList.remove('found');
+            }
+        }
+
+        // Display values on page load
+        displayLocalStorageItems();
+
+        // Optional: Listen for storage changes in other tabs/windows
+        window.addEventListener('storage', displayLocalStorageItems);
+    </script>
+</body>
+</html>
+
