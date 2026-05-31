@@ -16,7 +16,7 @@
   "dependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
-    "async": "^2.4.1",
+    "async": "^2.6.4",
     "babel-preset-env": "^1.7.0",
     "compression": "^1.7.3",
     "del": "^2.2.2",
